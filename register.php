@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <html>
 <head>
     <meta charset="UTF-8"/>
@@ -9,14 +8,13 @@
     <title>Register - Yalu Blog</title>
 </head>
 
-<body id="LoginForm">
+<body id="RegisterForm" style="margin: 0">
 <form method="POST">
     <div class="container">
         <div class="login-form">
             <div class="main-div">
                 <div class="panel">
-                    <h1>Yalu Blog</h1>
-                    <p>Veuillez remplir tous les champs pour vous enregistrer</p>
+                    <h1 style="padding-bottom: 20px">Yalu Blog</h1>
                 </div>
                 <form id="Login">
                     <div class="form-group">
