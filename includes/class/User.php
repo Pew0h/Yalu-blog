@@ -45,6 +45,18 @@ class User
             return $data['id_utilisateur'];
         }
     }
+
+    public static function isInformationExist(string $pseudo, string $email) : bool
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('SELECT `pseudo`, email FROM utilisateur WHERE `pseudo`= :user_pseudo OR email = :user_email');
+        $request->execute(array(
+            'user_pseudo' => $pseudo,
+            'user_email' => $email
+        ));
+
+        return $request->rowCount() >= 1;
+    }
 }
 
 ?>

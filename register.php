@@ -1,7 +1,22 @@
 <?php
+    session_start();
+    $_SESSION['alert'] = '';
     require_once('./includes/class/User.php');
     require_once('./includes/class/Role.php');
-    session_start();
+    require_once('./includes/class/Main.php');
+
+
+    if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])) {
+        if (!User::isInformationExist($_POST['pseudo'], $_POST['password']))
+        {
+            User::insertUser($_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['role']);
+        }
+        else
+        {
+            $_SESSION['alert'] = Main::alert('danger', 'Le pseudo ou le mail est déjà utilisé');
+        }
+    }
+
 ?>
 <html>
 <head>
@@ -21,6 +36,11 @@
                 <div class="panel">
                     <h1 style="padding-bottom: 20px">Yalu Blog</h1>
                 </div>
+                <?php
+                if(isset($_SESSION['alert'])) {
+                    echo $_SESSION['alert'];
+                }
+                ?>
                 <form id="Login">
                     <div class="form-group">
                         <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
@@ -51,7 +71,7 @@
                     <button type="submit" class="btn btn-primary">S'enregistrer</button>
                     <div class="form-group">
                         <br>
-                        <a href="./inscription.php">Pas encore inscrit ?</a>
+                        <a href="./login.php">Vous avez déjà un compte ?</a>
                         <br>
                         <a href="./index.php">Accéder au site sans compte ?</a>
                     </div>
@@ -62,14 +82,4 @@
 </form>
 </body>
 </html>
-
-<?php
-
-if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])){
-    User::insertUser($_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['role']);
-}
-
-?>
-
-
 
