@@ -1,3 +1,8 @@
+<?php
+    require_once('./includes/class/User.php');
+    session_start();
+?>
+
 <html>
 <head>
     <meta charset="UTF-8"/>
@@ -38,5 +43,15 @@
 </form>
 </body>
 </html>
+
+<?php
+if(isset($_POST['pseudo']) && isset($_POST['password']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){
+    if(User::isUserExist($_POST['pseudo'], $_POST['password'])){
+        $_SESSION['user_id'] =  User::getUserId($_POST['pseudo'], $_POST['password']);
+        //echo print_r($_SESSION, true);
+    }
+
+}
+?>
 
 

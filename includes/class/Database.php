@@ -18,7 +18,7 @@ class Database
                 $password = $config['db_password'];
 
                 self::$pdo = new PDO($dsn, $user, $password);
-                echo "Construction PDO";
+                //echo "Construction PDO";
             } catch (PDOException $e) {
                 echo 'Connexion échouée : ' . $e->getMessage();
             }
@@ -27,3 +27,5 @@ class Database
         return self::$pdo;
     }
 }
+
+?>
