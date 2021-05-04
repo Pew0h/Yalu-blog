@@ -55,3 +55,16 @@ CREATE TABLE Commentaire(
    FOREIGN KEY(id_article) REFERENCES Article(id_article),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
+
+]
+--
+-- Structure de la table `role`
+--
+
+INSERT INTO `role` (`id_role`, `nom`) VALUES
+(1, 'Administrateur'),
+(2, 'Éditeur'),
+(3, 'Abonné');
+COMMIT;
+
+
