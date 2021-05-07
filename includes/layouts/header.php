@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(isset($_GET['logout']))
+{
+    session_destroy();
+    header('Location: index.php');
+    exit;
+}
+?>
+
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -29,7 +39,17 @@
             <a class="nav-item nav-link" style="font-size: large" href="#">Mon compte</a>
         </div>
     </div>
-    <a id="logout" href="#" class="btn">Déconnexion</a>
+    <?php
+    if (isset($_SESSION['user_id']))
+    {
+        echo '<a id="logout" href="?logout" class="btn">Deconnexion</a>';
+    }
+    else
+    {
+        echo '<a id="logout" href="./login.php" class="btn">Connexion</a>';
+    }
+    ?>
+
 
 </nav>
 <body>

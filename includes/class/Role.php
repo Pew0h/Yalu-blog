@@ -7,6 +7,7 @@ class Role
         $request = $database->query("SELECT * FROM role WHERE nom != 'Administrateur'");
         return $request->fetchAll();
     }
+
 }
 
 ?>
