@@ -1,7 +1,7 @@
 <?php
 class Role
 {
-    public static function selectRoles()
+    public static function selectRoles(): array
     {
         $database = Database::getInstance();
         $request = $database->query("SELECT * FROM role WHERE nom != 'Administrateur'");
@@ -13,7 +13,7 @@ class Role
         $database = Database::getInstance();
         $request = $database->prepare('INSERT INTO role(nom) VALUES (:role_nom)');
         $request->execute(array(
-            'role_nom' => $nom
+            'role_nom' => ucwords($nom)
         ));
     }
 
@@ -22,7 +22,7 @@ class Role
         $database = Database::getInstance();
         $request = $database->prepare('UPDATE role SET nom = :role_nom WHERE id_role = :role_id');
         $request->execute(array(
-            'role_nom' => $nom,
+            'role_nom' => ucwords($nom),
             'role_id' => $id
         ));
     }
@@ -36,6 +36,15 @@ class Role
         ));
     }
 
+    function isRoleExist(int $nom): bool
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('SELECT nom FROM role WHERE nom = :role_nom');
+        $request->execute(array(
+            'role_nom' => ucwords($nom)
+        ));
+        return $request->rowCount() >= 1;
+    }
 }
 
 ?>
