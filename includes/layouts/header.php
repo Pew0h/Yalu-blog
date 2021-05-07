@@ -1,4 +1,6 @@
 <?php
+require_once('./includes/class/User.php');
+require_once('./includes/class/Role.php');
 session_start();
 if(isset($_GET['logout']))
 {
@@ -36,19 +38,31 @@ if(isset($_GET['logout']))
         <div class="navbar-nav">
             <a class="nav-item nav-link active" style="font-size: large" href="#">Accueil <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" style="font-size: large" href="#">Catégories</a>
-            <a class="nav-item nav-link" style="font-size: large" href="#">Mon compte</a>
         </div>
     </div>
-    <?php
-    if (isset($_SESSION['user_id']))
-    {
-        echo '<a id="logout" href="?logout" class="btn">Deconnexion</a>';
-    }
-    else
-    {
-        echo '<a id="logout" href="./login.php" class="btn">Connexion</a>';
-    }
-    ?>
+    <div class="dropdown" style="float:right;">
+        <div>
+            <img style="width: 40px;margin-right: 0;" src="./includes/images/person.svg">
+            <b><?php if (isset($_SESSION['user_id']))echo $_SESSION['user_pseudo']; else echo 'Visiteur';?></b>
+        </div>
+        <div class="dropdown-content">
+            <?php
+                if (isset($_SESSION['user_id']))
+                {
+                    echo '<a href="#" class="btn">Mon compte</a>';
+                    if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur')
+                    {
+                        echo '<a href="#" class="btn">Administration</a>';
+                    }
+                    echo '<a href="?logout" class="btn">Se déconnecter</a>';
+                }
+                else{
+
+                    echo '<a href="./login.php" class="btn">Se connecter</a>';
+                }
+            ?>
+        </div>
+    </div>
 
 
 </nav>

@@ -46,6 +46,18 @@ class User
         }
     }
 
+    public static function getUserInformation(int $id, string $colonne) : string
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('SELECT '.$colonne.' FROM utilisateur WHERE id_utilisateur = :id');
+        $request->execute(array(
+            'id' => $id
+        ));
+        while($data = $request->fetch()){
+            return $data[$colonne];
+        }
+    }
+
     public static function isInformationExist(string $pseudo, string $email) : bool
     {
         $database = Database::getInstance();
