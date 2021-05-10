@@ -69,6 +69,25 @@ class User
 
         return $request->rowCount() >= 1;
     }
+
+    public static function updateUser(string $nom, string $prenom, int $id)
+    {
+        $request = Database::getInstance()->prepare('UPDATE utilisateur SET nom = :user_nom, prenom = :user_prenom WHERE id_utilisateur = :user_id');
+        $request->execute(array(
+            'user_nom' => $nom,
+            'user_prenom' => $prenom,
+            'user_id' => $id
+        ));
+    }
+
+    public static function updateUserPassword(string $password, int $id)
+    {
+        $request = Database::getInstance()->prepare('UPDATE utilisateur SET mot_de_passe = :user_password WHERE id_utilisateur = :user_id');
+        $request->execute(array(
+            'user_password' => hash('sha512',$password),
+            'user_id' => $id
+        ));
+    }
 }
 
 ?>

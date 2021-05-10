@@ -1,7 +1,9 @@
 <?php
 require_once('./includes/class/User.php');
 require_once('./includes/class/Role.php');
+require_once('./includes/class/Main.php');
 session_start();
+$_SESSION['alert'] = '';
 if(isset($_GET['logout']))
 {
     session_destroy();
@@ -49,7 +51,7 @@ if(isset($_GET['logout']))
             <?php
                 if (isset($_SESSION['user_id']))
                 {
-                    echo '<a href="#" class="btn">Mon compte</a>';
+                    echo '<a href="./my_account.php" class="btn">Mon compte</a>';
                     if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur')
                     {
                         echo '<a href="#" class="btn">Administration</a>';
