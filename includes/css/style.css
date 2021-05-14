@@ -10,6 +10,7 @@ h2{
     border: none;
     color: white;
     padding: 8px 10px;
+    margin-bottom: 10px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
@@ -60,7 +61,7 @@ h2{
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #dadada;
     text-decoration:none; color: #41215B
 }
 .dropdown:hover .dropdown-content {

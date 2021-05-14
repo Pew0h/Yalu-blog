@@ -54,7 +54,7 @@ if(isset($_GET['logout']))
                     echo '<a href="./my_account.php" class="btn">Mon compte</a>';
                     if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur')
                     {
-                        echo '<a href="#" class="btn">Administration</a>';
+                        echo '<a href="./admin.php" class="btn">Administration</a>';
                     }
                     echo '<a href="?logout" class="btn">Se déconnecter</a>';
                 }
