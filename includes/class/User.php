@@ -88,6 +88,18 @@ class User
             'user_id' => $id
         ));
     }
+
+    public static function getNumberUsers()
+    {
+        $request = Database::getInstance()->query('SELECT count(*) FROM utilisateur');
+        return $request->fetch()[0];
+    }
+
+    public static function getUsers()
+    {
+        $request = Database::getInstance()->query('SELECT * FROM utilisateur');
+        return $request->fetchAll();
+    }
 }
 
 ?>
