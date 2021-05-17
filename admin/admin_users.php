@@ -19,12 +19,12 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 <hr>
             </div>
 
-            <div class="col-lg-5 mb-2">
+            <div class="col-lg-5">
                 <form method="Post" action="">
                 <div class="input-group">
                     <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher un utilisateur">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button">
+                        <button class="btn btn-secondary" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -32,14 +32,13 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 </form>
             </div>
 
-                <div class="col-lg-5 mb-2">
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <button class="button" type="button">Ajouter un utilisateur</button>
-                        </div>
+            <div class="col-lg-5">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button class="button" type="button">Ajouter un utilisateur</button>
                     </div>
                 </div>
-
+            </div>
 
             <div class="col-lg-12">
                 <table class="table table-hover ">
@@ -67,8 +66,12 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                     ?>
                     </tbody>
                 </table>
+                <?php
+                if (isset($_SESSION['alert'])) {
+                    echo $_SESSION['alert'];
+                }
+                ?>
             </div>
-
         </div>
     </div>
 </div>

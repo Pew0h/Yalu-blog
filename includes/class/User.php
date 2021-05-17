@@ -99,7 +99,10 @@ class User
     {
         if (isset($_POST['recherche'])) $recherche = $_POST['recherche'];
         $request = Database::getInstance()->query("SELECT * FROM utilisateur WHERE prenom LIKE '%$recherche%' OR nom LIKE '%$recherche%'");
-        return $request->fetchAll();
+        $data = $request->fetchAll();
+        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun utilisateur trouvé');
+        else $_SESSION['alert'] = '';
+        return $data;
     }
 }
 
