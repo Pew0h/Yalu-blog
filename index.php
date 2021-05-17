@@ -1,6 +1,5 @@
 <?php
+require_once ('./includes/layouts/header.php');
 
-require_once('./includes/class/Database.php');
-
-Database::getInstance(); // test connexion BDD
+require_once ('./includes/layouts/footer.php');
 ?>
