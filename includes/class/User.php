@@ -18,7 +18,7 @@ class User
             'user_role' => $role
         ));
     }
-
+    
     public static function isUserExist(string $pseudo, string $password) : bool
     {
         $database = Database::getInstance();
