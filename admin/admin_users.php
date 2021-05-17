@@ -20,23 +20,26 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
             </div>
 
             <div class="col-lg-5 mb-2">
+                <form method="Post" action="">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Rechercher un utilisateur">
+                    <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher un utilisateur">
                     <div class="input-group-append">
                         <button class="btn btn-secondary" type="button">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </div>
+                </form>
             </div>
 
-            <div class="col-lg-5 mb-2">
-                <div class="input-group">
-                    <div class="input-group-append">
-                        <button class="button" type="button">Ajouter un utilisateur</button>
+                <div class="col-lg-5 mb-2">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <button class="button" type="button">Ajouter un utilisateur</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+
 
             <div class="col-lg-12">
                 <table class="table table-hover ">
