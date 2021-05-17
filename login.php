@@ -3,18 +3,29 @@
     $_SESSION['alert'] = '';
     require_once('./includes/class/User.php');
     require_once('./includes/class/Main.php');
+    require_once('./includes/class/Role.php');
 
-    if(isset($_POST['pseudo']) && isset($_POST['password']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){
-        if(User::isUserExist($_POST['pseudo'], $_POST['password'])){
-            $_SESSION['user_id'] =  User::getUserId($_POST['pseudo'], $_POST['password']);
-            //echo print_r($_SESSION, true);
-            $_SESSION['alert'] = '';
+    if(isset($_POST['connect']))
+    {
+        if(isset($_POST['pseudo']) && isset($_POST['password']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){
+            if(User::isUserExist($_POST['pseudo'], $_POST['password'])){
+                $_SESSION['user_id'] =  User::getUserId($_POST['pseudo'], $_POST['password']);
+                $_SESSION['user_pseudo'] = User::getUserInformation($_SESSION['user_id'], 'pseudo');
+                $_SESSION['alert'] = '';
+                header('Location: index.php');
+                exit;
+            }
+            else
+            {
+                $_SESSION['alert'] = Main::alert('danger', 'Pseudo ou mot de passe incorrect');
+            }
         }
         else
         {
-            $_SESSION['alert'] = Main::alert('danger', 'Pseudo ou mot de passe incorrect');
+            $_SESSION['alert'] = Main::alert('danger', 'Veuillez remplir tous les champs');
         }
     }
+
 ?>
 
 <html>
@@ -49,7 +60,7 @@
                     <div class="form-group">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
                     </div>
-                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    <button type="submit" name="connect" class="btn btn-primary">Se connecter</button>
                     <div class="form-group">
                         <br>
                         <a href="./register.php">Pas encore inscrit ?</a>

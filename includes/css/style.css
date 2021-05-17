@@ -1,9 +1,34 @@
+/* general */
+h2{
+    text-align: center;
+    color: white !important;
+    padding-top: 20px;
+}
+
+.button{
+    background-color: #095985;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+
+.button:hover{
+    background-color: #41215B;
+    color: white;
+}
+
+
 /* Navbar */
 #navbar{
-
     background: rgba(242, 242, 242, 1);
     box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.4);
-
 }
 #navbar img{
     margin-left: 10px;
@@ -11,15 +36,36 @@
     width: 50px;
     height: 50px;
 }
-#logout{
-    background: #095985;
-    border-radius: 10px;
-    color: #c2e2ea;
-    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, .3);
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 50px;
 }
-#logout:hover{
-    background: #41215B;
-    color: white;
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: auto;
+    right: auto;
+    background-color: #f9f9f9;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #dadada;
+    text-decoration:none; color: #41215B
+}
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 
@@ -27,16 +73,18 @@
 body{
     background: linear-gradient(to bottom right, #095985, #41215B);
     background-size:cover;
-
+    overflow-y: auto;
 }
-
 
 
 /* footer */
 .footer-dark {
-    padding:30px 0;
+    padding:15px 0;
     color: #071625;
     background: rgba(242, 242, 242, 1);
+    position:absolute;
+    bottom:0;
+    width: 100%;
 }
 
 .footer-dark h3 {
@@ -87,13 +135,6 @@ body{
 }
 
 
-
-
-
-
-
-
-
 .footer-dark .item.social > a:hover {
     opacity:0.9;
 }
@@ -104,4 +145,11 @@ body{
     opacity:0.3;
     font-size:13px;
     margin-bottom:0;
+}
+
+
+/* Modification Bootstrap */
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #095985 !important;
 }

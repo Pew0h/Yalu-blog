@@ -1,3 +1,17 @@
+<?php
+require_once('./includes/class/User.php');
+require_once('./includes/class/Role.php');
+require_once('./includes/class/Main.php');
+session_start();
+$_SESSION['alert'] = '';
+if(isset($_GET['logout']))
+{
+    session_destroy();
+    header('Location: index.php');
+    exit;
+}
+?>
+
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -26,14 +40,35 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link active" style="font-size: large" href="#">Accueil <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" style="font-size: large" href="#">Catégories</a>
-            <a class="nav-item nav-link" style="font-size: large" href="#">Mon compte</a>
         </div>
     </div>
-    <a id="logout" href="#" class="btn">Déconnexion</a>
+    <div class="dropdown" style="float:right;">
+        <div>
+            <img style="width: 40px;margin-right: 0;" src="./includes/images/person.svg">
+            <b><?php if (isset($_SESSION['user_id']))echo $_SESSION['user_pseudo']; else echo 'Visiteur';?></b>
+        </div>
+        <div class="dropdown-content">
+            <?php
+                if (isset($_SESSION['user_id']))
+                {
+                    echo '<a href="./my_account.php" class="btn">Mon compte</a>';
+                    if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur')
+                    {
+                        echo '<a href="./admin/index.php" class="btn">Administration</a>';
+                    }
+                    echo '<a href="?logout" class="btn">Se déconnecter</a>';
+                }
+                else{
+
+                    echo '<a href="./login.php" class="btn">Se connecter</a>';
+                }
+            ?>
+        </div>
+    </div>
+
 
 </nav>
 <body>
-
 
 
 

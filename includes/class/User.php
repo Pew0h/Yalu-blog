@@ -18,7 +18,7 @@ class User
             'user_role' => $role
         ));
     }
-
+    
     public static function isUserExist(string $pseudo, string $password) : bool
     {
         $database = Database::getInstance();
@@ -31,7 +31,7 @@ class User
 
         return $request->rowCount() >= 1;
     }
-
+    
     public static function getUserId(string $pseudo, string $password) : int
     {
         $database = Database::getInstance();
@@ -46,6 +46,18 @@ class User
         }
     }
 
+    public static function getUserInformation(int $id, string $colonne) : string
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('SELECT '.$colonne.' FROM utilisateur WHERE id_utilisateur = :id');
+        $request->execute(array(
+            'id' => $id
+        ));
+        while($data = $request->fetch()){
+            return $data[$colonne];
+        }
+    }
+
     public static function isInformationExist(string $pseudo, string $email) : bool
     {
         $database = Database::getInstance();
@@ -56,6 +68,37 @@ class User
         ));
 
         return $request->rowCount() >= 1;
+    }
+
+    public static function updateUser(string $nom, string $prenom, int $id)
+    {
+        $request = Database::getInstance()->prepare('UPDATE utilisateur SET nom = :user_nom, prenom = :user_prenom WHERE id_utilisateur = :user_id');
+        $request->execute(array(
+            'user_nom' => $nom,
+            'user_prenom' => $prenom,
+            'user_id' => $id
+        ));
+    }
+
+    public static function updateUserPassword(string $password, int $id)
+    {
+        $request = Database::getInstance()->prepare('UPDATE utilisateur SET mot_de_passe = :user_password WHERE id_utilisateur = :user_id');
+        $request->execute(array(
+            'user_password' => hash('sha512',$password),
+            'user_id' => $id
+        ));
+    }
+
+    public static function getNumberUsers()
+    {
+        $request = Database::getInstance()->query('SELECT count(*) FROM utilisateur');
+        return $request->fetch()[0];
+    }
+
+    public static function getUsers()
+    {
+        $request = Database::getInstance()->query('SELECT * FROM utilisateur');
+        return $request->fetchAll();
     }
 }
 

@@ -1,7 +1,3 @@
-</body>
-</html>
-
-
 <div class="footer-dark">
     <footer>
         <div class="container">
