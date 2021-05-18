@@ -41,7 +41,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
             <div class="col-lg-5">
                 <div class="input-group">
                     <div class="input-group-append">
-                        <button class="button" type="button">Ajouter un utilisateur</button>
+                        <a class="button" href="admin_add_user.php">Ajouter un utilisateur</a>
                     </div>
                 </div>
             </div>

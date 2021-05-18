@@ -16,9 +16,17 @@
 .button:hover{
     background-color: #41215B;
     color: white;
+    text-decoration: none;
+}
+.btn-secondary{
+    background-color: #095985 !important;
+    border-color: #095985 !important;
 }
 
-
+.btn-secondary:hover{
+    background-color: #41215B !important;
+    border-color: #41215B !important;
+}
 
 #sidebar-wrapper {
     z-index: 1000;
