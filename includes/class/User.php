@@ -104,6 +104,14 @@ class User
         else $_SESSION['alert'] = '';
         return $data;
     }
+
+    public static function deleteUser($id_utilisateur)
+    {
+        $request = Database::getInstance()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = :id');
+        $request->execute(array(
+            'id' => $id_utilisateur,
+        ));
+    }
 }
 
 ?>

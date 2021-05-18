@@ -8,7 +8,13 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
         exit;
     }
 }
-
+    if (isset($_POST['id_utilisateur']))
+    {
+        if (isset($_POST['button_delete_user']))
+        {
+            User::deleteUser($_POST['id_utilisateur']);
+        }
+    }
 ?>
 <!-- Page Content -->
 <div id="page-content-wrapper">
@@ -55,13 +61,15 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                     <tbody>
                     <?php
                     foreach (User::getUsers() as $user) {
-                        echo '<tr>';
+                        echo '<form method="POST"><tr>';
+                        echo '<input type="hidden" name="id_utilisateur" id="id_utilisateur" value="'.$user['id_utilisateur'].'">';
                         echo '<th scope="row">'.$user['id_utilisateur'].'</th>';
                         echo '<td>'.$user['nom'].'</td>';
                         echo '<td>'.$user['prenom'].'</td>';
                         echo '<td>'.$user['pseudo'].'</td>';
                         echo '<td>'.$user['email'].'</td>';
-                        echo '<td width="250px"><button style="margin-right: 10px" type="button" class="btn btn-warning">Modifier</button> <button type="button" class="btn btn-danger">Supprimer</button></td>';
+                        echo '<td width="250px"><button style="margin-right: 10px" type="button" class="btn btn-warning">Modifier</button> <input type="submit" class="btn btn-danger" name="button_delete_user" value="Supprimer"></td>';
+                        echo '</form> ';
                     }
                     ?>
                     </tbody>
@@ -75,7 +83,6 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
         </div>
     </div>
 </div>
-
 </div>
 </body>
 </html>
