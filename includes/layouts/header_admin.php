@@ -52,7 +52,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 <a href="#">Gestion des articles</a>
             </li>
             <li>
-                <a href="#">Gestion des catégories</a>
+                <a href="../admin/admin_categories.php">Gestion des catégories</a>
             </li>
             <li>
                 <a href="#">Gestion des commentaires</a>
