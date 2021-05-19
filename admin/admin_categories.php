@@ -27,6 +27,14 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 <hr>
             </div>
 
+            <div class="col-lg-5">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <a class="button" href="admin_add_categorie.php">Ajouter une catégorie</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-lg-12">
                 <table class="table table-hover ">
                     <thead class="thead-dark">

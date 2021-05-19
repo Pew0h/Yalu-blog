@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0c30f3b-d768-459a-adbf-7d43b82aa41b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/admin/admin_add_categorie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_add_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_add_user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/admin_categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_categories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/suppression_element/categorie_suppression.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/class/Categorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Categorie.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
