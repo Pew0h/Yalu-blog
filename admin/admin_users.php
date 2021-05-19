@@ -9,7 +9,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
     }
 }
     if (isset($_POST['id_utilisateur']))
-    {
+        {
         if (isset($_POST['button_delete_user']))
         {
             User::deleteUser($_POST['id_utilisateur']);
@@ -68,7 +68,8 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                         echo '<td>'.$user['prenom'].'</td>';
                         echo '<td>'.$user['pseudo'].'</td>';
                         echo '<td>'.$user['email'].'</td>';
-                        echo '<td width="250px"><button style="margin-right: 10px" type="button" class="btn btn-outline-warning">Modifier</button> <input type="submit" class="btn btn-outline-danger" name="button_delete_user" value="Supprimer"></td>';
+                        echo '<td width="250px"><button style="margin-right: 10px" type="button" class="btn btn-outline-warning">Modifier</button> 
+                                                <input type="submit" class="btn btn-outline-danger" name="button_delete_user" value="Supprimer"></td>';
                         echo '</form> ';
                     }
                     ?>

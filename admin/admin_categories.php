@@ -7,6 +7,14 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
         header('Location: index.php');
         exit;
     }
+
+    if (isset($_POST['id_categorie']))
+    {
+        if (isset($_POST['button_delete_categorie']))
+        {
+            Categorie::deleteCategorie($_POST['id_categorie']);
+        }
+    }
 }
 ?>
 
@@ -31,11 +39,12 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                     <tbody>
                     <?php
                     foreach (Categorie::getCategories() as $categorie) {
-                        echo '<tr>';
+                        echo '<form method="POST"><tr>';
+                        echo '<input type="hidden" name="id_categorie" id="id_categorie" value="' .$categorie['id_categorie'].'">';
                         echo '<th scope="row">'.$categorie['id_categorie'].'</th>';
                         echo '<td>'.$categorie['nom'].'</td>';
-                        echo '<td width="250px"><a style="margin-right: 10px" type="button" class="btn btn-warning">Modifier</a> 
-                                    <a type="button" class="btn btn-danger">Supprimer</a></td>';
+                        echo '<td width="250px"><button style="margin-right: 10px" type="button" class="btn btn-outline-warning">Modifier</button> 
+                                                <button type="submit" class="btn btn-outline-danger" name="button_delete_categorie">Supprimer</button></td>';
                     }
                     ?>
                     </tbody>
