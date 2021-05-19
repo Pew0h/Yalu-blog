@@ -7,7 +7,7 @@ class User
         $database = Database::getInstance();
         $request = $database->prepare('INSERT INTO utilisateur(prenom, nom, `pseudo`, `mot_de_passe`, email, id_role, date_inscription) VALUES (:user_prenom, :user_nom, :user_pseudo, :user_password, :user_email, :user_role, :user_inscription)');
         $hashPassword = hash('sha512', $password);
-        echo $hashPassword;
+        //echo $hashPassword;
         $request->execute(array(
             'user_prenom' => $prenom,
             'user_nom' => $nom,
@@ -95,10 +95,22 @@ class User
         return $request->fetch()[0];
     }
 
-    public static function getUsers()
+    public static function getUsers($recherche = '')
     {
-        $request = Database::getInstance()->query('SELECT * FROM utilisateur');
-        return $request->fetchAll();
+        if (isset($_POST['recherche'])) $recherche = $_POST['recherche'];
+        $request = Database::getInstance()->query("SELECT * FROM utilisateur WHERE prenom LIKE '%$recherche%' OR nom LIKE '%$recherche%'");
+        $data = $request->fetchAll();
+        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun utilisateur trouvé');
+        else $_SESSION['alert'] = '';
+        return $data;
+    }
+
+    public static function deleteUser($id_utilisateur)
+    {
+        $request = Database::getInstance()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = :id');
+        $request->execute(array(
+            'id' => $id_utilisateur,
+        ));
     }
 }
 

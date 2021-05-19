@@ -5,6 +5,12 @@
     require_once('./includes/class/Main.php');
     require_once('./includes/class/Role.php');
 
+    if (isset($_SESSION['user_id']))
+    {
+        header('Location: index.php');
+        exit;
+    }
+
     if(isset($_POST['connect']))
     {
         if(isset($_POST['pseudo']) && isset($_POST['password']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){

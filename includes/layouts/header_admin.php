@@ -30,7 +30,6 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
 <body>
 
 <div id="wrapper">
-
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
@@ -52,14 +51,14 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 <a href="#">Gestion des articles</a>
             </li>
             <li>
-                <a href="#">Gestion des catégories</a>
+                <a href="../admin/admin_categories.php">Gestion des catégories</a>
             </li>
             <li>
                 <a href="#">Gestion des commentaires</a>
             </li>
             <hr>
             <li>
-                <a href="#">Revenir dans le site</a>
+                <a href="../index.php">Revenir dans le site</a>
             </li>
         </ul>
     </div>

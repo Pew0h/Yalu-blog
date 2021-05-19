@@ -10,6 +10,8 @@
         if (!User::isInformationExist($_POST['pseudo'], $_POST['password']))
         {
             User::insertUser($_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['role']);
+            header('Location: login.php');
+            exit;
         }
         else
         {
