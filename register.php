@@ -7,9 +7,9 @@
 
 
     if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])) {
-        if (!User::isInformationExist($_POST['pseudo'], $_POST['password']))
+        if (!User::isInformationExist($_POST['pseudo'], $_POST['email']))
         {
-            User::insertUser($_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['role']);
+            User::insertUser($_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password']);
             header('Location: login.php');
             exit;
         }
@@ -58,17 +58,6 @@
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
-                    </div>
-                    <div class="form-group">
-                        <label>Type de compte :</label>
-                        <select name="role" id="role">
-                        <?php
-                            foreach(Role::selectRoles() as $role)
-                            {
-                                echo '<option value="'.$role['id_role'].'">'.utf8_encode($role['nom']).'</option>';
-                            }
-                        ?>
-                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">S'enregistrer</button>
                     <div class="form-group">

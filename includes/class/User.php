@@ -2,7 +2,7 @@
 require('Database.php');
 class User
 {
-    public static function insertUser(string $prenom, string $nom, string $pseudo, string $email, string $password, int $role)
+    public static function insertUser(string $prenom, string $nom, string $pseudo, string $email, string $password, int $role = 3)
     {
         $database = Database::getInstance();
         $request = $database->prepare('INSERT INTO utilisateur(prenom, nom, `pseudo`, `mot_de_passe`, email, id_role, date_inscription) VALUES (:user_prenom, :user_nom, :user_pseudo, :user_password, :user_email, :user_role, :user_inscription)');

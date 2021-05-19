@@ -1,6 +1,5 @@
 <?php
 require_once('../includes/layouts/header_admin.php');
-
 if(isset($_SESSION['user_id'])) // Si appuie du bouton
 {
     if (Role::getUserRole($_SESSION['user_id']) != 'Administrateur'){
@@ -41,7 +40,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
             <div class="col-lg-5">
                 <div class="input-group">
                     <div class="input-group-append">
-                        <a class="button" href="admin_add_user.php">Ajouter un utilisateur</a>
+                        <a class="button" href="admin_user_add.php">Ajouter un utilisateur</a>
                     </div>
                 </div>
             </div>

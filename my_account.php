@@ -1,6 +1,9 @@
 <?php
 require_once ('./includes/layouts/header.php');
-
+if (!isset($_SESSION['user_id'])){
+    header('Location: index.php');
+    exit;
+}
 if(isset($_POST['confirm-info'])) // Si appuie du bouton
 {
     if(isset($_POST['nom']) && isset($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['prenom'])){
