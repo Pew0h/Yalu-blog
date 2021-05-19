@@ -8,7 +8,13 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
         exit;
     }
 }
-
+    if (isset($_POST['id_utilisateur']))
+    {
+        if (isset($_POST['button_delete_user']))
+        {
+            User::deleteUser($_POST['id_utilisateur']);
+        }
+    }
 ?>
 <!-- Page Content -->
 <div id="page-content-wrapper">
@@ -19,21 +25,23 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 <hr>
             </div>
 
-            <div class="col-lg-5 mb-2">
+            <div class="col-lg-5">
+                <form method="Post" action="">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Rechercher un utilisateur">
+                    <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher un utilisateur">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button">
+                        <button class="btn btn-secondary" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </div>
+                </form>
             </div>
 
-            <div class="col-lg-5 mb-2">
+            <div class="col-lg-5">
                 <div class="input-group">
                     <div class="input-group-append">
-                        <button class="button" type="button">Ajouter un utilisateur</button>
+                        <a class="button" href="admin_add_user.php">Ajouter un utilisateur</a>
                     </div>
                 </div>
             </div>
@@ -53,23 +61,28 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                     <tbody>
                     <?php
                     foreach (User::getUsers() as $user) {
-                        echo '<tr>';
+                        echo '<form method="POST"><tr>';
+                        echo '<input type="hidden" name="id_utilisateur" id="id_utilisateur" value="'.$user['id_utilisateur'].'">';
                         echo '<th scope="row">'.$user['id_utilisateur'].'</th>';
                         echo '<td>'.$user['nom'].'</td>';
                         echo '<td>'.$user['prenom'].'</td>';
                         echo '<td>'.$user['pseudo'].'</td>';
                         echo '<td>'.$user['email'].'</td>';
-                        echo '<td width="250px"><button style="margin-right: 10px" type="button" class="btn btn-warning">Modifier</button> <button type="button" class="btn btn-danger">Supprimer</button></td>';
+                        echo '<td width="250px"><button style="margin-right: 10px" type="button" class="btn btn-outline-warning">Modifier</button> <input type="submit" class="btn btn-outline-danger" name="button_delete_user" value="Supprimer"></td>';
+                        echo '</form> ';
                     }
                     ?>
                     </tbody>
                 </table>
+                <?php
+                if (isset($_SESSION['alert'])) {
+                    echo $_SESSION['alert'];
+                }
+                ?>
             </div>
-
         </div>
     </div>
 </div>
-
 </div>
 </body>
 </html>

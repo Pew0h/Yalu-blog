@@ -19,14 +19,6 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 <hr>
             </div>
 
-            <div class="col-lg-5 mb-2">
-                <div class="input-group">
-                    <div class="input-group-append">
-                        <button class="button" type="button">Ajouter une catégorie </button>
-                    </div>
-                </div>
-            </div>
-
             <div class="col-lg-12">
                 <table class="table table-hover ">
                     <thead class="thead-dark">
@@ -42,9 +34,8 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                         echo '<tr>';
                         echo '<th scope="row">'.$categorie['id_categorie'].'</th>';
                         echo '<td>'.$categorie['nom'].'</td>';
-                        echo '<td width="250px">
-                                    <a style="margin-right: 10px" type="button" class="btn btn-warning">Modifier</a> 
-                                    <a type="button" class="btn btn-danger" <?php echo href="suppression_element/categorie_suppression.php?id='.$categorie['id_categorie'].'" ?> Supprimer</a></td>';
+                        echo '<td width="250px"><a style="margin-right: 10px" type="button" class="btn btn-warning">Modifier</a> 
+                                    <a type="button" class="btn btn-danger">Supprimer</a></td>';
                     }
                     ?>
                     </tbody>

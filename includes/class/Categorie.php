@@ -13,12 +13,9 @@ class Categorie
         return $request->fetchAll();
     }
 
-    public static function dropCategorie(string $id)
+    public static function dropCategorie($name)
     {
-        $request = Database::getInstance()->prepare('DELETE FROM categorie WHERE id_categorie = :id');
-        $request->execute(array(
-            'id' => $id
-        ));
+        $request = Database::getInstance()->query('DELETE FROM categorie WHERE ');
     }
 }
 
