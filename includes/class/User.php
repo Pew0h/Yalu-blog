@@ -112,6 +112,16 @@ class User
             'id' => $id_utilisateur,
         ));
     }
+
+    public static function isUserIdExit($id_utilisateur)
+    {
+        $request = Database::getInstance()->prepare('SELECT id_utilisateur FROM utilisateur WHERE id_utilisateur = :id_utilisateur');
+        $request->execute(array(
+            'id_utilisateur' => $id_utilisateur
+        ));
+
+        return $request->rowCount() >= 1;
+    }
 }
 
 ?>
