@@ -1,13 +1,21 @@
 <?php
 class Role
 {
-    public static function selectRoles(): array
+    public static function selectUserRole(string $userRole): array
     {
-        $database = Database::getInstance();
-        $request = $database->query("SELECT * FROM role");
+        $request = Database::getInstance()->query("SELECT * FROM role WHERE id_role = $userRole");
         return $request->fetchAll();
     }
-
+    public static function selectOtherRoles(int $userRole): array
+    {
+        $request = Database::getInstance()->query("SELECT * FROM role WHERE id_role != $userRole");
+        return $request->fetchAll();
+    }
+    public static function selectAllRoles(): array
+    {
+        $request = Database::getInstance()->query("SELECT * FROM role");
+        return $request->fetchAll();
+    }
     public static function insertRole(string $nom)
     {
         $database = Database::getInstance();

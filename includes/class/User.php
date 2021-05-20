@@ -70,12 +70,39 @@ class User
         return $request->rowCount() >= 1;
     }
 
-    public static function updateUser(string $nom, string $prenom, int $id)
+    public static function isInformationExistAdmin(string $pseudo, string $email, int $id) : bool
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('SELECT `pseudo`, email FROM utilisateur WHERE (`pseudo`= :user_pseudo OR email = :user_email) AND id_utilisateur != :id_utilisateur');
+        $request->execute(array(
+            'user_pseudo' => $pseudo,
+            'user_email' => $email,
+            'id_utilisateur' => $id
+        ));
+
+        return $request->rowCount() >= 1;
+    }
+
+
+    public static function updateUserInformation(string $nom, string $prenom, int $id)
     {
         $request = Database::getInstance()->prepare('UPDATE utilisateur SET nom = :user_nom, prenom = :user_prenom WHERE id_utilisateur = :user_id');
         $request->execute(array(
             'user_nom' => $nom,
             'user_prenom' => $prenom,
+            'user_id' => $id
+        ));
+    }
+
+    public static function updateUser(string $prenom, string $nom, string $pseudo, string $email, int $role, int $id)
+    {
+        $request = Database::getInstance()->prepare('UPDATE utilisateur SET nom = :user_nom, prenom = :user_prenom, email = :user_email, pseudo = :user_pseudo, id_role = :user_role WHERE id_utilisateur = :user_id');
+        $request->execute(array(
+            'user_nom' => $nom,
+            'user_prenom' => $prenom,
+            'user_email' => $email,
+            'user_pseudo' => $pseudo,
+            'user_role' => $role,
             'user_id' => $id
         ));
     }

@@ -13,7 +13,26 @@
     {
         if(User::isUserIdExit($_GET['id']))
         {
-            // TODOO
+            if (isset($_POST['button_modify']))
+            {
+                if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['role']) &&
+                    !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['pseudo']) && !empty($_POST['role']))
+                {
+                    if (User::isInformationExistAdmin($_POST['pseudo'], $_POST['email'], $_GET['id']))
+                    {
+                        $_SESSION['alert'] = Main::alert('danger', 'Pseudo ou email déjà utilisé');
+                    }
+                    else
+                    {
+                        User::updateUser($_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['role'], $_GET['id']);
+                        $_SESSION['alert'] = Main::alert('success', 'Modification de l\'utilisateur avec succès');
+                    }
+
+                }
+                else{
+                    $_SESSION['alert'] = Main::alert('danger', 'Vous devez remplir tous les champs !');
+                }
+            }
         }
         else
         {
@@ -72,14 +91,18 @@
                                 <label>Type de compte :</label>
                                 <select name="role" id="role">
                                     <?php
-                                    foreach(Role::selectRoles() as $role)
+                                    foreach(Role::selectUserRole(User::getUserInformation($_GET['id'], 'id_role')) as $role)
+                                    {
+                                        echo '<option value="'.$role['id_role'].'">'.utf8_encode($role['nom']).'</option>';
+                                    }
+                                    foreach(Role::selectOtherRoles(User::getUserInformation($_GET['id'], 'id_role')) as $role)
                                     {
                                         echo '<option value="'.$role['id_role'].'">'.utf8_encode($role['nom']).'</option>';
                                     }
                                     ?>
                                 </select>
                             </div>
-                            <button type="submit" name="button_register" class="btn btn-primary">Modifer l'utilisateur</button>
+                            <button type="submit" name="button_modify" class="btn btn-primary">Modifer l'utilisateur</button>
                         </form>
                     </div>
                 </center>
