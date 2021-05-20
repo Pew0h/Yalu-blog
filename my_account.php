@@ -1,10 +1,13 @@
 <?php
 require_once ('./includes/layouts/header.php');
-
+if (!isset($_SESSION['user_id'])){
+    header('Location: index.php');
+    exit;
+}
 if(isset($_POST['confirm-info'])) // Si appuie du bouton
 {
     if(isset($_POST['nom']) && isset($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['prenom'])){
-        User::updateUser($_POST['nom'], $_POST['prenom'], $_SESSION['user_id']);
+        User::updateUserInformation($_POST['nom'], $_POST['prenom'], $_SESSION['user_id']);
         $_SESSION['alert'] = Main::alert('success', 'Changement des informations avec succès');
     }else
     {

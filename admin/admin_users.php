@@ -1,6 +1,5 @@
 <?php
 require_once('../includes/layouts/header_admin.php');
-
 if(isset($_SESSION['user_id'])) // Si appuie du bouton
 {
     if (Role::getUserRole($_SESSION['user_id']) != 'Administrateur'){
@@ -13,6 +12,12 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
         if (isset($_POST['button_delete_user']))
         {
             User::deleteUser($_POST['id_utilisateur']);
+        }
+
+        if (isset($_POST['button_modify_user']))
+        {
+            header('Location: admin_user_modify?id='.$_POST['id_utilisateur']);
+            exit;
         }
     }
 ?>
@@ -41,7 +46,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
             <div class="col-lg-5">
                 <div class="input-group">
                     <div class="input-group-append">
-                        <a class="button" href="admin_add_user.php">Ajouter un utilisateur</a>
+                        <a class="button" href="admin_user_add.php">Ajouter un utilisateur</a>
                     </div>
                 </div>
             </div>
@@ -68,7 +73,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                         echo '<td>'.$user['prenom'].'</td>';
                         echo '<td>'.$user['pseudo'].'</td>';
                         echo '<td>'.$user['email'].'</td>';
-                        echo '<td width="250px"><button style="margin-right: 10px" type="button" class="btn btn-outline-warning">Modifier</button> <input type="submit" class="btn btn-outline-danger" name="button_delete_user" value="Supprimer"></td>';
+                        echo '<td width="220px"><button type="submit" class="btn btn-outline-warning" name="button_modify_user">Modifier</button> <button type="submit" class="btn btn-outline-danger" name="button_delete_user">Supprimer</button></td>';
                         echo '</form> ';
                     }
                     ?>

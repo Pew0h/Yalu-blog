@@ -66,7 +66,7 @@ if (isset($_POST['button_register']))
                                 <label>Type de compte :</label>
                                 <select name="role" id="role">
                                     <?php
-                                    foreach(Role::selectRoles() as $role)
+                                    foreach(Role::selectAllRoles() as $role)
                                     {
                                         echo '<option value="'.$role['id_role'].'">'.utf8_encode($role['nom']).'</option>';
                                     }

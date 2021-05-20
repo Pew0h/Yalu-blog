@@ -6,7 +6,7 @@ require_once('../includes/class/Article.php');
 require_once('../includes/class/Commentaire.php');
 require_once('../includes/class/Categorie.php');
 session_start();
-
+$_SESSION['alert'] = '';
 if(isset($_SESSION['user_id'])) // Si appuie du bouton
 {
     if (Role::getUserRole($_SESSION['user_id']) != 'Administrateur'){
@@ -39,22 +39,22 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 </a>
             </li>
             <li>
-                <a href="./admin_users.php">Gestion des utilisateurs</a>
+                <a href="./admin_users.php">Utilisateurs</a>
             </li>
             <li>
-                <a href="#">Gestion des rôles</a>
+                <a href="#">Rôles</a>
             </li>
             <li>
-                <a href="#">Gestion du menu</a>
+                <a href="#">Menu</a>
             </li>
             <li>
-                <a href="#">Gestion des articles</a>
+                <a href="#">Articles</a>
             </li>
             <li>
-                <a href="../admin/admin_categories.php">Gestion des catégories</a>
+                <a href="../admin/admin_categories.php">Catégories</a>
             </li>
             <li>
-                <a href="#">Gestion des commentaires</a>
+                <a href="#">Commentaires</a>
             </li>
             <hr>
             <li>
