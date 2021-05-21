@@ -16,7 +16,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
         }
         if (isset($_POST['button_modify_categorie']))
         {
-            header('Location: admin_categorie_modify?id='.$_POST['id_categorie']);
+            header('Location: admin_categorie_modify.php?id='.$_POST['id_categorie']);
             exit;
         }
     }
