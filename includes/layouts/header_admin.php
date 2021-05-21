@@ -34,7 +34,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a style="color: white; font-size: 20px" href="#">
+                <a style="color: white; font-size: 20px" href="index.php">
                     Espace Adminitrateur
                 </a>
             </li>
@@ -42,7 +42,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 <a href="./admin_users.php">Utilisateurs</a>
             </li>
             <li>
-                <a href="#">Rôles</a>
+                <a href="./admin_roles.php">Rôles</a>
             </li>
             <li>
                 <a href="#">Menu</a>
