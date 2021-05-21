@@ -41,6 +41,7 @@ CREATE TABLE Article(
    titre VARCHAR(255) NOT NULL,
    image VARCHAR(255) NOT NULL,
    contenu VARCHAR(255) NOT NULL,
+   date_creation DATE NOT NULL,
    id_categorie INT NOT NULL,
    id_utilisateur INT NOT NULL,
    FOREIGN KEY(id_categorie) REFERENCES Categorie(id_categorie),
