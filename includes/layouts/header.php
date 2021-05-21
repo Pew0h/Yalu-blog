@@ -2,6 +2,10 @@
 require_once('./includes/class/User.php');
 require_once('./includes/class/Role.php');
 require_once('./includes/class/Main.php');
+require_once('./includes/class/Article.php');
+require_once('./includes/class/Commentaire.php');
+require_once('./includes/class/Categorie.php');
+
 session_start();
 $_SESSION['alert'] = '';
 if(isset($_GET['logout']))
