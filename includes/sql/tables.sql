@@ -54,6 +54,7 @@ CREATE TABLE Commentaire(
    commentaire VARCHAR(50),
    id_article INT NOT NULL,
    id_utilisateur INT NOT NULL,
+   date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
    FOREIGN KEY(id_article) REFERENCES Article(id_article),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );

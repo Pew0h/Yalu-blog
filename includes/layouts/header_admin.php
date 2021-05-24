@@ -48,13 +48,13 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 <a href="#">Menu</a>
             </li>
             <li>
-                <a href="#">Articles</a>
+                <a href="./admin_articles.php">Articles</a>
             </li>
             <li>
-                <a href="../admin/admin_categories.php">Catégories</a>
+                <a href="./admin_categories.php">Catégories</a>
             </li>
             <li>
-                <a href="#">Commentaires</a>
+                <a href="./admin_commentaires.php">Commentaires</a>
             </li>
             <hr>
             <li>
