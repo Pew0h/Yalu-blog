@@ -16,7 +16,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
 
         if (isset($_POST['button_modify_user']))
         {
-            header('Location: admin_user_modify?id='.$_POST['id_utilisateur']);
+            header('Location: admin_user_modify.php?id='.$_POST['id_utilisateur']);
             exit;
         }
     }

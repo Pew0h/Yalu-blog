@@ -7,19 +7,19 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
         header('Location: index.php');
         exit;
     }
-
-    if (isset($_POST['id_categorie']))
+    if (isset($_POST['id_role']))
     {
-        if (isset($_POST['button_delete_categorie']))
+        if (isset($_POST['button_delete_role']))
         {
-            Categorie::deleteCategorie($_POST['id_categorie']);
+            Role::deleteRole($_POST['id_role']);
         }
-        if (isset($_POST['button_modify_categorie']))
+        if (isset($_POST['button_modify_role']))
         {
-            header('Location: admin_categorie_modify.php?id='.$_POST['id_categorie']);
+            header('Location: admin_role_modify.php?id='.$_POST['id_role']);
             exit;
         }
     }
+
 }
 ?>
 
@@ -28,14 +28,14 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2><i class="fas fa-book-open"></i> Gestion des Catégories</h2>
+                <h2><i class="fas fa-user-tag"></i> Gestion des rôles</h2>
                 <hr>
             </div>
 
             <div class="col-lg-5">
                 <form method="Post" action="">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher une catégorie">
+                        <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher un rôle">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="submit">
                                 <i class="fa fa-search"></i>
@@ -48,7 +48,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
             <div class="col-lg-5">
                 <div class="input-group">
                     <div class="input-group-append">
-                        <a class="button" href="admin_add_categorie.php">Ajouter une catégorie</a>
+                        <a class="button" href="admin_add_role.php">Ajouter un rôle</a>
                     </div>
                 </div>
             </div>
@@ -64,13 +64,13 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                     </thead>
                     <tbody>
                     <?php
-                    foreach (Categorie::getCategories() as $categorie) {
+                    foreach (Role::getRoles() as $role) {
                         echo '<form method="POST"><tr>';
-                        echo '<input type="hidden" name="id_categorie" id="id_categorie" value="' .$categorie['id_categorie'].'">';
-                        echo '<th scope="row">'.$categorie['id_categorie'].'</th>';
-                        echo '<td>'.$categorie['nom'].'</td>';
-                        echo '<td width="250px"><button style="margin-right: 10px" type="submit" name="button_modify_categorie" class="btn btn-outline-warning">Modifier</button> 
-                                                <button type="submit" class="btn btn-outline-danger" name="button_delete_categorie">Supprimer</button></td>';
+                        echo '<input type="hidden" name="id_role" id="id_role" value="'.$role['id_role'].'">';
+                        echo '<th scope="row">'.$role['id_role'].'</th>';
+                        echo '<td>'.utf8_encode($role['nom']).'</td>';
+                        echo '<td width="250px"><button style="margin-right: 10px" type="submit" name="button_modify_role" class="btn btn-outline-warning">Modifier</button> 
+                                                <button type="submit" class="btn btn-outline-danger" name="button_delete_role">Supprimer</button></td>';
                         echo '</form> ';
                     }
                     ?>
