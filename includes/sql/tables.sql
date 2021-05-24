@@ -44,6 +44,7 @@ CREATE TABLE Article(
    date_creation DATE NOT NULL,
    id_categorie INT NOT NULL,
    id_utilisateur INT NOT NULL,
+   date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
    FOREIGN KEY(id_categorie) REFERENCES Categorie(id_categorie),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
