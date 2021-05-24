@@ -6,9 +6,6 @@
             <?php
             foreach (Article::getArticles() as $article) {
                 $img = $article['image'];
-                $date = explode(" ",$article['date_creation']);
-                $date_jour = date('d/m/Y', strtotime($date[0]));
-
 
                 if (!empty($img)){
                     $contenu_trunc = Article::truncate($article['contenu'], 75, '...', true); ?>
@@ -20,7 +17,7 @@
 
                                 <div class="blog-info">
 
-                                    <h6><a href="#"><b><?= $article['nom']?></b></a></h6>
+                                    <h6><a href="#"><b><?= $article['categorie_nom']?></b></a></h6>
                                     <hr>
 
 
@@ -35,7 +32,7 @@
 
 
                                     <ul class="post-footer">
-                                        <li><a href="#"><i class="ion-calendar"></i><?= $date_jour?></a></li>
+                                        <li><a href="#"><i class="ion-calendar"></i><?= $article['date_creation']?></a></li>
                                         <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
 
                                     </ul>
@@ -57,7 +54,7 @@
 
                                 <div class="blog-info">
 
-                                    <h6><a href="#"><b><?= $article['nom']?></b></a></h6>
+                                    <h6><a href="#"><b><?= $article['categorie_nom']?></b></a></h6>
                                     <hr>
 
                                     <h4 class="title"><a href="#"><b><?= $article['titre']?></b></a></h4>
@@ -69,7 +66,7 @@
 
 
                                     <ul class="post-footer">
-                                        <li><a href="#"><i class="ion-calendar"></i><?= $date_jour ?></a></li>
+                                        <li><a href="#"><i class="ion-calendar"></i><?= $article['date_creation'] ?></a></li>
                                         <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
 
                                     </ul>
