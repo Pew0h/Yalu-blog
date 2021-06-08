@@ -39,7 +39,7 @@ CREATE TABLE Utilisateur(
    mot_de_passe VARCHAR(255) NOT NULL,
    nom VARCHAR(255) NOT NULL,
    prenom VARCHAR(255) NOT NULL,
-   date_inscription DATE NOT NULL,
+   date_inscription DATETIME DEFAULT CURRENT_TIMESTAMP,
    id_role INT NOT NULL,
    UNIQUE(pseudo),
    UNIQUE(email),
@@ -51,7 +51,6 @@ CREATE TABLE Article(
    titre VARCHAR(255) NOT NULL,
    image VARCHAR(255) NOT NULL,
    contenu VARCHAR(255) NOT NULL,
-   date_creation DATE NOT NULL,
    id_categorie INT NOT NULL,
    id_utilisateur INT NOT NULL,
    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -69,7 +68,6 @@ CREATE TABLE Commentaire(
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
-]
 --
 -- Structure de la table `role`
 --
