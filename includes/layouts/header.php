@@ -60,19 +60,19 @@ if(isset($_GET['logout']))
         </div>
         <div class="dropdown-content">
             <?php
-                if (isset($_SESSION['user_id']))
+            if (isset($_SESSION['user_id']))
+            {
+                echo '<a href="./my_account.php" class="btn">Mon compte</a>';
+                if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur')
                 {
-                    echo '<a href="./my_account.php" class="btn">Mon compte</a>';
-                    if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur')
-                    {
-                        echo '<a href="./admin/index.php" class="btn">Administration</a>';
-                    }
-                    echo '<a href="?logout" class="btn">Se déconnecter</a>';
+                    echo '<a href="./admin/index.php" class="btn">Administration</a>';
                 }
-                else{
+                echo '<a href="?logout" class="btn">Se déconnecter</a>';
+            }
+            else{
 
-                    echo '<a href="./login.php" class="btn">Se connecter</a>';
-                }
+                echo '<a href="./login.php" class="btn">Se connecter</a>';
+            }
             ?>
         </div>
     </div>
@@ -80,7 +80,6 @@ if(isset($_GET['logout']))
 
 </nav>
 <body>
-
 
 
 

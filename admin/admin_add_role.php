@@ -13,14 +13,14 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
 if (isset($_POST['button_register']))
 {
     if  (isset($_POST['nom'])  && !empty($_POST['nom']) ) {
-        if (!Categorie::isInformationExist($_POST['nom']))
+        if (!Role::isInformationExist($_POST['nom']))
         {
-            Categorie::insertCategorie($_POST['nom']);
-            $_SESSION['alert'] = Main::alert('success', 'Catégorie ajouté avec succès');
+            Role::insertRole($_POST['nom']);
+            $_SESSION['alert'] = Main::alert('success', 'Rôle ajouté avec succès');
         }
         else
         {
-            $_SESSION['alert'] = Main::alert('danger', 'Le nom de la catégorie est déjà utilisé');
+            $_SESSION['alert'] = Main::alert('danger', 'Le nom du rôle est déjà utilisé');
         }
     }
     else{

@@ -10,6 +10,7 @@
     font-size: 16px;
     transition-duration: 0.4s;
     cursor: pointer;
+    border-radius : 4px;
 }
 
 
@@ -18,6 +19,8 @@
     color: white;
     text-decoration: none;
 }
+
+/* Modification Bootstrap */
 .btn-secondary{
     background-color: #095985 !important;
     border-color: #095985 !important;
@@ -26,6 +29,12 @@
 .btn-secondary:hover{
     background-color: #41215B !important;
     border-color: #41215B !important;
+}
+
+
+.input-group-text
+{
+    width: 100px;
 }
 
 #sidebar-wrapper {

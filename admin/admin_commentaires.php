@@ -8,16 +8,15 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
         exit;
     }
 
-    if (isset($_POST['id_categorie']))
+    if (isset($_POST['id_commentaire']))
     {
-        if (isset($_POST['button_delete_categorie']))
+        if (isset($_POST['button_delete_commentaire']))
         {
-            Categorie::deleteCategorie($_POST['id_categorie']);
+            Commentaire::deleteCommentaire($_POST['id_commentaire']);
         }
-        if (isset($_POST['button_modify_categorie']))
+        if (isset($_POST['button_modify_commentaire']))
         {
-            header('Location: admin_categorie_modify.php?id='.$_POST['id_categorie']);
-            exit;
+
         }
     }
 }
@@ -28,14 +27,14 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2><i class="fas fa-book-open"></i> Gestion des Catégories</h2>
+                <h2><i class="far fa-comments"></i></i> Gestion des commentaires</h2>
                 <hr>
             </div>
 
             <div class="col-lg-5">
                 <form method="Post" action="">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher une catégorie">
+                        <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher un commentaire">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="submit">
                                 <i class="fa fa-search"></i>
@@ -45,32 +44,30 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 </form>
             </div>
 
-            <div class="col-lg-5">
-                <div class="input-group">
-                    <div class="input-group-append">
-                        <a class="button" href="admin_add_categorie.php">Ajouter une catégorie</a>
-                    </div>
-                </div>
-            </div>
-
             <div class="col-lg-12">
                 <table class="table table-hover ">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nom</th>
+                        <th scope="col">Commentaire</th>
+                        <th scope="col">Article</th>
+                        <th scope="col">Auteur</th>
+                        <th scope="col">Date de publication</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    foreach (Categorie::getCategories() as $categorie) {
+                    foreach (Commentaire::getCommentaires() as $article) {
                         echo '<form method="POST"><tr>';
-                        echo '<input type="hidden" name="id_categorie" id="id_categorie" value="' .$categorie['id_categorie'].'">';
-                        echo '<th scope="row">'.$categorie['id_categorie'].'</th>';
-                        echo '<td>'.$categorie['nom'].'</td>';
-                        echo '<td width="250px"><button style="margin-right: 10px" type="submit" name="button_modify_categorie" class="btn btn-outline-warning">Modifier</button> 
-                                                <button type="submit" class="btn btn-outline-danger" name="button_delete_categorie">Supprimer</button></td>';
+                        echo '<input type="hidden" name="id_commentaire" id="id_commentaire" value="' .$article['id_commentaire'].'">';
+                        echo '<th scope="row">'.$article['id_commentaire'].'</th>';
+                        echo '<td>'.$article['commentaire'].'</td>';
+                        echo '<td><a href="#">#'.$article['id_article'].'</a> '.$article['nom'].'</td>';
+                        echo '<td>'.$article['pseudo'].'</td>';
+                        echo '<td width="200px">'.$article['date_creation'].'</td>';;
+                        echo '<td width="250px"><button style="margin-right: 10px" type="submit" name="button_modify_commentaire" class="btn btn-outline-warning">Modifier</button> 
+                                                <button type="submit" class="btn btn-outline-danger" name="button_delete_commentaire">Supprimer</button></td>';
                         echo '</form> ';
                     }
                     ?>
