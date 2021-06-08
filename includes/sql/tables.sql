@@ -19,6 +19,7 @@ CREATE TABLE Menu_items(
    lien VARCHAR(255) NOT NULL,
    ordre INT NOT NULL,
    id_menu INT NOT NULL,
+   parent_id INT NULL,
    FOREIGN KEY(id_menu) REFERENCES Menu(id_menu)
 );
 
@@ -29,7 +30,7 @@ CREATE TABLE Utilisateur(
    mot_de_passe VARCHAR(255) NOT NULL,
    nom VARCHAR(255) NOT NULL,
    prenom VARCHAR(255) NOT NULL,
-   date_inscription DATE NOT NULL,
+   date_inscription DATETIME DEFAULT CURRENT_TIMESTAMP,
    id_role INT NOT NULL,
    UNIQUE(pseudo),
    UNIQUE(email),
@@ -41,7 +42,6 @@ CREATE TABLE Article(
    titre VARCHAR(255) NOT NULL,
    image VARCHAR(255) NOT NULL,
    contenu VARCHAR(255) NOT NULL,
-   date_creation DATE NOT NULL,
    id_categorie INT NOT NULL,
    id_utilisateur INT NOT NULL,
    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -59,7 +59,6 @@ CREATE TABLE Commentaire(
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
-]
 --
 -- Structure de la table `role`
 --
@@ -68,6 +67,12 @@ INSERT INTO `role` (`id_role`, `nom`) VALUES
 (1, 'Administrateur'),
 (2, 'Éditeur'),
 (3, 'Abonné');
+COMMIT;
+
+INSERT INTO `Categorie` (`id_categorie`, `nom`) VALUES
+(1, 'Lifestyle'),
+(2, 'Dancefloor'),
+(3, 'Monde');
 COMMIT;
 
 

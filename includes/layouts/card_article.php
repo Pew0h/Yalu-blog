@@ -33,7 +33,7 @@
 
                                     <ul class="post-footer">
                                         <li><a href="#"><i class="ion-calendar"></i><?= $article['date_creation']?></a></li>
-                                        <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
+                                        <li><a href="#"><i class="ion-chatbubble"></i><?= Commentaire::getNumberCommentairesArticle($article['id_article']) ?></a></li>
 
                                     </ul>
 
@@ -67,7 +67,7 @@
 
                                     <ul class="post-footer">
                                         <li><a href="#"><i class="ion-calendar"></i><?= $article['date_creation'] ?></a></li>
-                                        <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
+                                        <li><a href="#"><i class="ion-chatbubble"></i><?= Commentaire::getNumberCommentairesArticle($article['id_article']) ?></a></li>
 
                                     </ul>
 

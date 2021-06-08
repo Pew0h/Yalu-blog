@@ -6,6 +6,14 @@ class Commentaire
         $request = Database::getInstance()->query('SELECT count(*) FROM commentaire');
         return $request->fetch()[0];
     }
+    public static function getNumberCommentairesArticle($id_article)
+    {
+        $request = Database::getInstance()->prepare('SELECT count(*) FROM commentaire WHERE id_article = :id');
+        $request->execute(array(
+            'id' => $id_article
+        ));
+        return $request->fetch()[0];
+    }
 
     public static function getCommentaires($recherche = '')
     {
