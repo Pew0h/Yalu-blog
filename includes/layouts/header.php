@@ -5,6 +5,7 @@ require_once('./includes/class/Main.php');
 require_once('./includes/class/Article.php');
 require_once('./includes/class/Commentaire.php');
 require_once('./includes/class/Categorie.php');
+require_once('./includes/class/Menu.php');
 
 session_start();
 $_SESSION['alert'] = '';
@@ -49,7 +50,7 @@ if(isset($_GET['logout']))
         <div class="navbar-nav">
             <a class="nav-item nav-link active" style="font-size: large" href="#">Accueil <span class="sr-only">(current)</span></a>
             <?php
-            foreach (Main::getMenuItems(1) as $menuItem) {
+            foreach (Menu::getMenuItems(1) as $menuItem) {
                 if ($menuItem['is_parent'] == 1)
                 {
                     echo '
@@ -58,7 +59,7 @@ if(isset($_GET['logout']))
                                     '.utf8_encode($menuItem['nom']).'
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
-                    foreach (Main::getMenuSubItems($menuItem['id_menu_items']) as $subItem)
+                    foreach (Menu::getMenuSubItems($menuItem['id_menu_items']) as $subItem)
                     {
                         echo '<a class="dropdown-item" href="'.$subItem['lien'].'">'.utf8_encode($subItem['nom']).'</a>';
                     }

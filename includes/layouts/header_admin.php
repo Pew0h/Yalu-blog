@@ -5,6 +5,8 @@ require_once('../includes/class/Main.php');
 require_once('../includes/class/Article.php');
 require_once('../includes/class/Commentaire.php');
 require_once('../includes/class/Categorie.php');
+require_once('../includes/class/Menu.php');
+
 session_start();
 $_SESSION['alert'] = '';
 if(isset($_SESSION['user_id'])) // Si appuie du bouton
@@ -45,7 +47,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                 <a href="./admin_roles.php">Rôles</a>
             </li>
             <li>
-                <a href="#">Menu</a>
+                <a href="./admin_menus.php">Menu</a>
             </li>
             <li>
                 <a href="./admin_articles.php">Articles</a>
