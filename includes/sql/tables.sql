@@ -22,6 +22,16 @@ CREATE TABLE Menu_items(
    FOREIGN KEY(id_menu) REFERENCES Menu(id_menu)
 );
 
+CREATE TABLE Menu_sub_items(
+    id_menu_sub_items INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    menu_items_parent_id VARCHAR(255) NOT NULL,
+    menu_items_child_id VARCHAR(255) NOT NULL,
+    ordre INT NOT NULL,
+    FOREIGN KEY(menu_items_parent_id) REFERENCES Menu_items(id_menu_items),
+    FOREIGN KEY(menu_items_child_id) REFERENCES Menu_items(id_menu_items)
+);
+
+
 CREATE TABLE Utilisateur(
    id_utilisateur INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    pseudo VARCHAR(255) NOT NULL,
@@ -68,6 +78,12 @@ INSERT INTO `role` (`id_role`, `nom`) VALUES
 (1, 'Administrateur'),
 (2, 'Éditeur'),
 (3, 'Abonné');
+COMMIT;
+
+INSERT INTO `Categorie` (`id_categorie`, `nom`) VALUES
+(1, 'Lifestyle'),
+(2, 'Dancefloor'),
+(3, 'Monde');
 COMMIT;
 
 
