@@ -35,8 +35,6 @@ if(isset($_GET['logout']))
     <link href="common-css/bootstrap.css" rel="stylesheet">
 
     <link href="common-css/ionicons.css" rel="stylesheet">
-
-
 </head>
 
 
@@ -50,7 +48,29 @@ if(isset($_GET['logout']))
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" style="font-size: large" href="#">Accueil <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" style="font-size: large" href="#">Catégories</a>
+            <?php
+            foreach (Main::getMenuItems(1) as $menuItem) {
+                if ($menuItem['is_parent'] == 1)
+                {
+                    echo '
+                           <div class="dropdown">
+                                <a class="nav-item nav-link dropdown-toggle" href="" style="font-size: large" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    '.utf8_encode($menuItem['nom']).'
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
+                    foreach (Main::getMenuSubItems($menuItem['id_menu_items']) as $subItem)
+                    {
+                        echo '<a class="dropdown-item" href="'.$subItem['lien'].'">'.utf8_encode($subItem['nom']).'</a>';
+                    }
+                    echo '</div></div>';
+                }
+                else
+                {
+                    echo '<a class="nav-item nav-link" style="font-size: large" href="'.$menuItem['lien'].'">'.utf8_encode($menuItem['nom']).'</a>';
+                }
+
+            }
+            ?>
         </div>
     </div>
     <div class="dropdown" style="float:right;">

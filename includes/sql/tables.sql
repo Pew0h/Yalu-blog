@@ -18,6 +18,7 @@ CREATE TABLE Menu_items(
    nom VARCHAR(255) NOT NULL,
    lien VARCHAR(255) NOT NULL,
    ordre INT NOT NULL,
+   is_parent BOOLEAN,
    id_menu INT NOT NULL,
    parent_id INT NULL,
    FOREIGN KEY(id_menu) REFERENCES Menu(id_menu)
@@ -74,5 +75,18 @@ INSERT INTO `Categorie` (`id_categorie`, `nom`) VALUES
 (2, 'Dancefloor'),
 (3, 'Monde');
 COMMIT;
+
+INSERT INTO `Menu` (`id_menu`, `nom`) VALUES
+(1, 'navbar');
+COMMIT;
+
+INSERT INTO `menu_items` (`id_menu_items`, `nom`, `lien`, `ordre`, `id_menu`, `parent_id`) VALUES
+(1, 'Lifestyle', '#', 1, 1, NULL),
+(2, 'Mode', '#', 2, 1, NULL),
+(3, 'Catégorie', '#', 3, 1, NULL),
+(4, 'Catégorie 1', '#', 1, 1, 3),
+(5, 'Catégorie 2', '#', 1, 1, 3);
+COMMIT;
+
 
 
