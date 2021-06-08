@@ -19,18 +19,9 @@ CREATE TABLE Menu_items(
    lien VARCHAR(255) NOT NULL,
    ordre INT NOT NULL,
    id_menu INT NOT NULL,
+   parent_id INT NULL,
    FOREIGN KEY(id_menu) REFERENCES Menu(id_menu)
 );
-
-CREATE TABLE Menu_sub_items(
-    id_menu_sub_items INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    menu_items_parent_id VARCHAR(255) NOT NULL,
-    menu_items_child_id VARCHAR(255) NOT NULL,
-    ordre INT NOT NULL,
-    FOREIGN KEY(menu_items_parent_id) REFERENCES Menu_items(id_menu_items),
-    FOREIGN KEY(menu_items_child_id) REFERENCES Menu_items(id_menu_items)
-);
-
 
 CREATE TABLE Utilisateur(
    id_utilisateur INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
