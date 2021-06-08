@@ -50,7 +50,7 @@ if(isset($_GET['logout']))
         <div class="navbar-nav">
             <a class="nav-item nav-link active" style="font-size: large" href="#">Accueil <span class="sr-only">(current)</span></a>
             <?php
-            foreach (Menu::getMenuItems(1) as $menuItem) {
+            foreach (Menu::getMenuItems(4) as $menuItem) {
                 if ($menuItem['is_parent'] == 1)
                 {
                     echo '

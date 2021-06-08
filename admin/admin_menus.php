@@ -12,11 +12,12 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
     {
         if (isset($_POST['button_delete_menu']))
         {
-
+            Menu::deleteMenu($_POST['id_menu']);
         }
         if (isset($_POST['button_modify_menu']))
         {
-
+            header('Location: admin_menu_modify.php?id='.$_POST['id_menu']);
+            exit;
         }
     }
 }
@@ -69,7 +70,7 @@ if(isset($_SESSION['user_id'])) // Si appuie du bouton
                         echo '<th scope="row">'.$menu['id_menu'].'</th>';
                         echo '<td>'.$menu['nom'].'</td>';
                         echo '<td width="400px">
-                                <button type="submit" class="btn btn-outline-primary" name="button_add_menu_items">Ajouter des items</button>
+                                <button type="submit" class="btn btn-outline-primary" name="button_list_menu_items">Liste des items</button>
                                 <button type="submit" name="button_modify_menu" class="btn btn-outline-warning">Modifier</button> 
                                 <button type="submit" class="btn btn-outline-danger" name="button_delete_menu">Supprimer</button>
                               </td>';

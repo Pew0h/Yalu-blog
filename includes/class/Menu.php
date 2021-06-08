@@ -31,6 +31,59 @@ class Menu
         ));
     }
 
+    public static function deleteMenu(int $id)
+    {
+        $requestMenu = Database::getInstance()->prepare('DELETE FROM menu WHERE id_menu = :id');
+        $requestMenu->execute(array(
+            'id' => $id,
+        ));
+        $requestItems = Database::getInstance()->prepare('DELETE FROM menu_items WHERE id_menu = :id');
+        $requestItems->execute(array(
+            'id' => $id,
+        ));
+    }
+
+    public static function isMenuIdExist($id)
+    {
+        $request = Database::getInstance()->prepare('SELECT id_menu FROM menu WHERE id_menu = :id');
+        $request->execute(array(
+            'id' => $id
+        ));
+        return $request->rowCount() >= 1;
+    }
+
+    public static function isInformationExistAdmin(string $nom, int $id)
+    {
+        $request = Database::getInstance()->prepare('SELECT nom FROM menu WHERE nom = :menu_nom AND id_menu != :id');
+        $request->execute(array(
+            'menu_nom' => $nom,
+            'id' => $id
+        ));
+        return $request->rowCount() >= 1;
+    }
+
+    public static function updateMenu(string $nom, int $id)
+    {
+        $request = Database::getInstance()->prepare('UPDATE menu SET nom = :menu_nom WHERE id_menu = :id');
+        $request->execute(array(
+            'menu_nom' => $nom,
+            'id' => $id
+        ));
+    }
+
+    public static function getMenuName(int $id)
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('SELECT nom FROM menu WHERE id_menu = :id');
+        $request->execute(array(
+            'id' => $id,
+        ));
+
+        while($data = $request->fetch()){
+            return $data['nom'];
+        }
+    }
+
     public static function getMenuItems(int $id)
     {
         $request = Database::getInstance()->query("SELECT * FROM menu 
