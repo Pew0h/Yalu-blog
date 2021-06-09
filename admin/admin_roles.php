@@ -1,25 +1,17 @@
 <?php
 require_once('../includes/layouts/header_admin.php');
 
-if(isset($_SESSION['user_id'])) // Si appuie du bouton
+if (isset($_POST['id_role']))
 {
-    if (Role::getUserRole($_SESSION['user_id']) != 'Administrateur'){
-        header('Location: index.php');
+    if (isset($_POST['button_delete_role']))
+    {
+        Role::deleteRole($_POST['id_role']);
+    }
+    if (isset($_POST['button_modify_role']))
+    {
+        header('Location: admin_role_modify.php?id='.$_POST['id_role']);
         exit;
     }
-    if (isset($_POST['id_role']))
-    {
-        if (isset($_POST['button_delete_role']))
-        {
-            Role::deleteRole($_POST['id_role']);
-        }
-        if (isset($_POST['button_modify_role']))
-        {
-            header('Location: admin_role_modify.php?id='.$_POST['id_role']);
-            exit;
-        }
-    }
-
 }
 ?>
 

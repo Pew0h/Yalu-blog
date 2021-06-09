@@ -8,11 +8,11 @@ require_once('../includes/class/Categorie.php');
 require_once('../includes/class/Menu.php');
 
 session_start();
-$_SESSION['alert'] = '';
+
 if(isset($_SESSION['user_id'])) // Si appuie du bouton
 {
     if (Role::getUserRole($_SESSION['user_id']) != 'Administrateur'){
-        header('Location: index.php');
+        http_response_code(403);
         exit;
     }
 }
