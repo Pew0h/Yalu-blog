@@ -1,23 +1,25 @@
 <?php
 require_once('../includes/layouts/header_admin.php');
 
-if (isset($_POST['id_menu']))
-{
-    if (isset($_POST['button_delete_menu']))
-    {
-        Menu::deleteMenu($_POST['id_menu']);
+    if ($_GET['id']){
+        $id_menu = $_GET['id'];
     }
-    if (isset($_POST['button_modify_menu']))
+    else
     {
-        header('Location: admin_menu_modify.php?id='.$_POST['id_menu']);
+        header('Location: admin_menus.php');
         exit;
     }
-    if (isset($_POST['button_list_menu_items']))
+
+
+    if (isset($_POST['id_menu']))
     {
-        header('Location: admin_menu_items.php?id='.$_POST['id_menu']);
-        exit;
+        if (isset($_POST['button_delete_menu']))
+        {
+        }
+        if (isset($_POST['button_modify_menu']))
+        {
+        }
     }
-}
 ?>
 
 <!-- Page Content -->
@@ -25,14 +27,14 @@ if (isset($_POST['id_menu']))
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2><i class="fas fa-ellipsis-h"></i> Gestion des menus</h2>
+                <h2><i class="fas fa-clipboard-list"></i> Items du menu <?= Menu::GetMenuName($id_menu); ?></h2>
                 <hr>
             </div>
 
             <div class="col-lg-5">
                 <form method="Post" action="">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher un menu">
+                        <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher d'un item">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="submit">
                                 <i class="fa fa-search"></i>
@@ -45,7 +47,7 @@ if (isset($_POST['id_menu']))
             <div class="col-lg-5">
                 <div class="input-group">
                     <div class="input-group-append">
-                        <a class="button" href="admin_add_menu.php">Ajouter un menu</a>
+                        <a class="button" href="admin_add_menu.php">Ajouter un item</a>
                     </div>
                 </div>
             </div>
@@ -56,18 +58,23 @@ if (isset($_POST['id_menu']))
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nom</th>
+                        <th scope="col">Type de l'item</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    foreach (Menu::getMenus() as $menu) {
+                    foreach (Menu::getMenuItemsAll($id_menu) as $item) {
                         echo '<form method="POST"><tr>';
-                        echo '<input type="hidden" name="id_menu" id="id_menu" value="' .$menu['id_menu'].'">';
-                        echo '<th scope="row">'.$menu['id_menu'].'</th>';
-                        echo '<td>'.$menu['nom'].'</td>';
-                        echo '<td width="400px">
-                                <button type="submit" class="btn btn-outline-primary" name="button_list_menu_items">Liste des items</button>
+                        echo '<td>'.$item['id_menu_items'].'</td>';
+                        echo '<td>'.$item['nom'].'</td>';
+                        if($item['is_parent'])
+                            echo '<td>Item parent</td>';
+                        elseif($item['parent_id'] != null)
+                            echo '<td>Sous-item</td>';
+                        else
+                            echo '<td>Item simple</td>';
+                        echo '<td width="250px">
                                 <button type="submit" name="button_modify_menu" class="btn btn-outline-warning">Modifier</button> 
                                 <button type="submit" class="btn btn-outline-danger" name="button_delete_menu">Supprimer</button>
                               </td>';

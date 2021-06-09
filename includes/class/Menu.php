@@ -8,7 +8,7 @@ class Menu
         if (isset($_POST['recherche'])) $recherche = $_POST['recherche'];
         $request = Database::getInstance()->query("SELECT * FROM menu WHERE nom LIKE '%$recherche%'");
         $data = $request->fetchAll();
-        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucune catégorie trouvée');
+        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun menu trouvé');
         else $_SESSION['alert'] = '';
         return $data;
     }
@@ -90,6 +90,18 @@ class Menu
                                                    LEFT OUTER JOIN menu_items ON menu_items.id_menu = menu.id_menu
                                                    WHERE menu.id_menu = $id AND parent_id is NULL ORDER BY ordre");
         return $request->fetchAll();
+    }
+
+    public static function getMenuItemsAll(int $id, $recherche = '')
+    {
+        if (isset($_POST['recherche'])) $recherche = $_POST['recherche'];
+        $request = Database::getInstance()->query("SELECT * FROM menu 
+                                                   LEFT OUTER JOIN menu_items ON menu_items.id_menu = menu.id_menu
+                                                   WHERE menu.id_menu = '$id' AND menu_items.nom LIKE '%$recherche%' ORDER BY ordre, parent_id");
+        $data = $request->fetchAll();
+        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun item trouvé');
+        else $_SESSION['alert'] = '';
+        return $data;
     }
 
     public static function getMenuSubItems(int $parent_id)
