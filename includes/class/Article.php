@@ -32,6 +32,32 @@ class Article
         return substr_replace($string, $replacement, $max_length);
     }
 
+    public static function getRandomId()
+    {
+        $randomId = Database::getInstance()->query("SELECT id_article FROM article ORDER BY RAND() LIMIT 1");
+
+        $data = $randomId->fetch();
+        return $data;
+
+    }
+
+    public static function getArticleById(int $id)
+    {
+        $request = Database::getInstance()->prepare("SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation  FROM article 
+                                                                    LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
+                                                                    LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur 
+                                                                    WHERE id_article = :id ");
+        $request->execute(array(
+            'id' => $id
+        ));
+
+        $data = $request->fetch();
+        return $data;
+
+
+
+    }
+
     public static function deleteArticle($id_article)
     {
         $request = Database::getInstance()->prepare('DELETE FROM article WHERE id_article = :id');
