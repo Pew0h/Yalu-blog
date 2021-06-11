@@ -18,7 +18,7 @@ class Commentaire
     public static function getCommentairesArticle($id_article)
     {
 
-        $request = Database::getInstance()->prepare("SELECT * FROM commentaire LEFT OUTER JOIN utilisateur ON commentaire.id_utilisateur = utilisateur.id_utilisateur WHERE id_article = :id ");
+        $request = Database::getInstance()->prepare("SELECT *, DATE_FORMAT(commentaire.date_creation, '%d/%m/%Y') as date_creation FROM commentaire LEFT OUTER JOIN utilisateur ON commentaire.id_utilisateur = utilisateur.id_utilisateur WHERE id_article = :id ");
 
         $request->execute(array(
             'id' => $id_article
