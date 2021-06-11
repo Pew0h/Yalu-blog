@@ -86,18 +86,23 @@ class Menu
 
     public static function getMenuItems(int $id)
     {
-        $request = Database::getInstance()->query("SELECT * FROM menu 
-                                                   LEFT OUTER JOIN menu_items ON menu_items.id_menu = menu.id_menu
-                                                   WHERE menu.id_menu = $id AND parent_id is NULL ORDER BY ordre");
+        $request = Database::getInstance()->query("SELECT id_menu_items AS 'id', menu_items.nom, parent_id, lien, 
+                                                   CASE WHEN( SELECT COUNT(*) FROM menu_items WHERE parent_id = id) > 0 
+                                                   THEN TRUE ELSE FALSE END AS 'parent' FROM menu_items
+                                                   LEFT OUTER JOIN menu ON menu.id_menu = menu_items.id_menu
+                                                   WHERE menu.id_menu = $id ORDER BY ordre");
         return $request->fetchAll();
     }
+
 
     public static function getMenuItemsAll(int $id, $recherche = '')
     {
         if (isset($_POST['recherche'])) $recherche = $_POST['recherche'];
-        $request = Database::getInstance()->query("SELECT * FROM menu 
-                                                   LEFT OUTER JOIN menu_items ON menu_items.id_menu = menu.id_menu
-                                                   WHERE menu.id_menu = '$id' AND menu_items.nom LIKE '%$recherche%' ORDER BY ordre, parent_id");
+        $request = Database::getInstance()->query("SELECT id_menu_items AS 'id', menu_items.nom, parent_id, lien, 
+                                                   CASE WHEN( SELECT COUNT(*) FROM menu_items WHERE parent_id = id) > 0 
+                                                   THEN TRUE ELSE FALSE END AS 'parent' FROM menu_items
+                                                   LEFT OUTER JOIN menu ON menu.id_menu = menu_items.id_menu
+                                                   WHERE menu.id_menu = '$id' ORDER BY ordre, parent_id");
         $data = $request->fetchAll();
         if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun item trouvé');
         else $_SESSION['alert'] = '';

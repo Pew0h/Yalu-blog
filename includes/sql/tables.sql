@@ -18,7 +18,6 @@ CREATE TABLE Menu_items(
    nom VARCHAR(255) NOT NULL,
    lien VARCHAR(255) NOT NULL,
    ordre INT NOT NULL,
-   is_parent BOOLEAN,
    id_menu INT NOT NULL,
    parent_id INT NULL,
    FOREIGN KEY(id_menu) REFERENCES Menu(id_menu)
@@ -42,7 +41,7 @@ CREATE TABLE Article(
    id_article INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    titre VARCHAR(255) NOT NULL,
    image VARCHAR(255) NOT NULL,
-   contenu VARCHAR(255) NOT NULL,
+   contenu LONGTEXT NOT NULL,
    id_categorie INT NOT NULL,
    id_utilisateur INT NOT NULL,
    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,

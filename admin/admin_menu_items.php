@@ -47,7 +47,7 @@ require_once('../includes/layouts/header_admin.php');
             <div class="col-lg-5">
                 <div class="input-group">
                     <div class="input-group-append">
-                        <a class="button" href="admin_add_menu.php">Ajouter un item</a>
+                        <?php echo '<a class="button" href="admin_add_menu_items.php?id='.$id_menu.'">Ajouter un item</a>';?>
                     </div>
                 </div>
             </div>
@@ -66,12 +66,12 @@ require_once('../includes/layouts/header_admin.php');
                     <?php
                     foreach (Menu::getMenuItemsAll($id_menu) as $item) {
                         echo '<form method="POST"><tr>';
-                        echo '<td>'.$item['id_menu_items'].'</td>';
+                        echo '<td>'.$item['id'].'</td>';
                         echo '<td>'.$item['nom'].'</td>';
-                        if($item['is_parent'])
-                            echo '<td>Item parent</td>';
+                        if($item['parent'] == 1)
+                            echo '<td style="font-weight: bold">Item parent</td>';
                         elseif($item['parent_id'] != null)
-                            echo '<td>Sous-item</td>';
+                            echo '<td style="font-style: italic">Sous-item</td>';
                         else
                             echo '<td>Item simple</td>';
                         echo '<td width="250px">

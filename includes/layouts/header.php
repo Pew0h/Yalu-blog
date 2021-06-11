@@ -51,15 +51,15 @@ if(isset($_GET['logout']))
             <a class="nav-item nav-link active" style="font-size: large" href="#">Accueil <span class="sr-only">(current)</span></a>
             <?php
             foreach (Menu::getMenuItems(4) as $menuItem) {
-                if ($menuItem['is_parent'] == 1)
+                if ($menuItem['parent'] == 1)
                 {
                     echo '
-                           <div class="dropdown">
+                           <div class="dropdown" style="width: 10%">
                                 <a class="nav-item nav-link dropdown-toggle" href="" style="font-size: large" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     '.utf8_encode($menuItem['nom']).'
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
-                    foreach (Menu::getMenuSubItems($menuItem['id_menu_items']) as $subItem)
+                    foreach (Menu::getMenuSubItems($menuItem['id']) as $subItem)
                     {
                         echo '<a class="dropdown-item" href="'.$subItem['lien'].'">'.utf8_encode($subItem['nom']).'</a>';
                     }
@@ -73,6 +73,7 @@ if(isset($_GET['logout']))
             }
             ?>
         </div>
+        </div
     </div>
     <div class="dropdown" style="float:right;">
         <div>

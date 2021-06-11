@@ -1,4 +1,8 @@
 
+
+
+
+
 <section class="blog-area section">
     <div class="container">
 
@@ -27,7 +31,7 @@
 
 
 
-                                    <a href="#" class="button" ><i class="ion-pricetag"></i>  Voir l'article </a>
+                                    <a href="article.php?id=<?= $article['id_article']?>" class="button" ><i class="ion-pricetag"></i>  Voir l'article </a>
 
 
 
@@ -61,7 +65,7 @@
 
                                     <p class="blog-contenu"><?= $contenu_trunc?></p>
 
-                                    <a href="#" class="button"><i class="ion-pricetag"></i>  Voir l'article </a>
+                                    <a href="article.php?id=<?= $article['id_article']?>" class="button"><i class="ion-pricetag"></i>  Voir l'article </a>
 
 
 
