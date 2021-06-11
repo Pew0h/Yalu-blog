@@ -22,6 +22,7 @@ if(isset($_GET['logout']))
 
 
     <meta charset="UTF-8"/>
+    <link href="./includes/css/article_style.css" rel="stylesheet">
     <link href="./includes/css/card_style.css" rel="stylesheet">
     <link href="./includes/css/style.css" rel="stylesheet" id="css">
     <link href="./includes/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
