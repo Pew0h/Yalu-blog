@@ -11,12 +11,13 @@ require_once('../includes/layouts/header_admin.php');
     }
 
 
-    if (isset($_POST['id_menu']))
+    if (isset($_POST['id_menu_items']))
     {
-        if (isset($_POST['button_delete_menu']))
+        if (isset($_POST['button_delete_item']))
         {
+            Menu::deleteItem($_POST['id_menu_items']);
         }
-        if (isset($_POST['button_modify_menu']))
+        if (isset($_POST['button_modify_item']))
         {
         }
     }
@@ -66,6 +67,7 @@ require_once('../includes/layouts/header_admin.php');
                     <?php
                     foreach (Menu::getMenuItemsAll($id_menu) as $item) {
                         echo '<form method="POST"><tr>';
+                        echo '<input type="hidden" name="id_menu_items" id="id_menu_items" value="' .$item['id'].'">';
                         echo '<td>'.$item['id'].'</td>';
                         echo '<td>'.$item['nom'].'</td>';
                         if($item['parent'] == 1)
@@ -75,8 +77,8 @@ require_once('../includes/layouts/header_admin.php');
                         else
                             echo '<td>Item simple</td>';
                         echo '<td width="250px">
-                                <button type="submit" name="button_modify_menu" class="btn btn-outline-warning">Modifier</button> 
-                                <button type="submit" class="btn btn-outline-danger" name="button_delete_menu">Supprimer</button>
+                                <button type="submit" name="button_modify_item" class="btn btn-outline-warning">Modifier</button> 
+                                <button type="submit" class="btn btn-outline-danger" name="button_delete_item">Supprimer</button>
                               </td>';
                         echo '</form> ';
                     }

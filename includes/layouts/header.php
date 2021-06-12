@@ -20,10 +20,9 @@ if(isset($_GET['logout']))
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
     <meta charset="UTF-8"/>
     <link href="./includes/css/card_style.css" rel="stylesheet">
+    <link href="./includes/css/article_style.css" rel="stylesheet">
     <link href="./includes/css/style.css" rel="stylesheet" id="css">
     <link href="./includes/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="./includes/js/bootstrap.min.js"></script>
@@ -65,7 +64,7 @@ if(isset($_GET['logout']))
                     }
                     echo '</div></div>';
                 }
-                else
+                elseif($menuItem['parent_id'] == null)
                 {
                     echo '<a class="nav-item nav-link" style="font-size: large" href="'.$menuItem['lien'].'">'.utf8_encode($menuItem['nom']).'</a>';
                 }
