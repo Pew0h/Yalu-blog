@@ -1,15 +1,20 @@
 <?php
 require_once('../includes/layouts/header_admin.php');
 
-if (isset($_POST['id_role']))
+if (isset($_POST['id_menu']))
 {
-    if (isset($_POST['button_delete_role']))
+    if (isset($_POST['button_delete_menu']))
     {
-        Role::deleteRole($_POST['id_role']);
+        Menu::deleteMenu($_POST['id_menu']);
     }
-    if (isset($_POST['button_modify_role']))
+    if (isset($_POST['button_modify_menu']))
     {
-        header('Location: admin_role_modify.php?id='.$_POST['id_role']);
+        header('Location: admin_menu_modify.php?id='.$_POST['id_menu']);
+        exit;
+    }
+    if (isset($_POST['button_list_menu_items']))
+    {
+        header('Location: admin_menu_items.php?id='.$_POST['id_menu']);
         exit;
     }
 }
@@ -20,14 +25,14 @@ if (isset($_POST['id_role']))
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2><i class="fas fa-user-tag"></i> Gestion des rôles</h2>
+                <h2><i class="fas fa-ellipsis-h"></i> Gestion des menus</h2>
                 <hr>
             </div>
 
             <div class="col-lg-5">
                 <form method="Post" action="">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher un rôle">
+                        <input type="text" class="form-control" id="recherche" name="recherche" placeholder="Rechercher un menu">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="submit">
                                 <i class="fa fa-search"></i>
@@ -40,7 +45,7 @@ if (isset($_POST['id_role']))
             <div class="col-lg-5">
                 <div class="input-group">
                     <div class="input-group-append">
-                        <a class="button" href="admin_add_role.php">Ajouter un rôle</a>
+                        <a class="button" href="admin_add_menu.php">Ajouter un menu</a>
                     </div>
                 </div>
             </div>
@@ -56,13 +61,16 @@ if (isset($_POST['id_role']))
                     </thead>
                     <tbody>
                     <?php
-                    foreach (Role::getRoles() as $role) {
+                    foreach (Menu::getMenus() as $menu) {
                         echo '<form method="POST"><tr>';
-                        echo '<input type="hidden" name="id_role" id="id_role" value="'.$role['id_role'].'">';
-                        echo '<th scope="row">'.$role['id_role'].'</th>';
-                        echo '<td>'.utf8_encode($role['nom']).'</td>';
-                        echo '<td width="250px"><button style="margin-right: 10px" type="submit" name="button_modify_role" class="btn btn-outline-warning">Modifier</button> 
-                                                <button type="submit" class="btn btn-outline-danger" name="button_delete_role">Supprimer</button></td>';
+                        echo '<input type="hidden" name="id_menu" id="id_menu" value="' .$menu['id_menu'].'">';
+                        echo '<th scope="row">'.$menu['id_menu'].'</th>';
+                        echo '<td>'.$menu['nom'].'</td>';
+                        echo '<td width="400px">
+                                <button type="submit" class="btn btn-outline-primary" name="button_list_menu_items">Liste des items</button>
+                                <button type="submit" name="button_modify_menu" class="btn btn-outline-warning">Modifier</button> 
+                                <button type="submit" class="btn btn-outline-danger" name="button_delete_menu">Supprimer</button>
+                              </td>';
                         echo '</form> ';
                     }
                     ?>

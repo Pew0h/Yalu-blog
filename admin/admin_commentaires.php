@@ -1,23 +1,15 @@
 <?php
 require_once('../includes/layouts/header_admin.php');
 
-if(isset($_SESSION['user_id'])) // Si appuie du bouton
+if (isset($_POST['id_commentaire']))
 {
-    if (Role::getUserRole($_SESSION['user_id']) != 'Administrateur'){
-        header('Location: index.php');
-        exit;
-    }
-
-    if (isset($_POST['id_commentaire']))
+    if (isset($_POST['button_delete_commentaire']))
     {
-        if (isset($_POST['button_delete_commentaire']))
-        {
-            Commentaire::deleteCommentaire($_POST['id_commentaire']);
-        }
-        if (isset($_POST['button_modify_commentaire']))
-        {
+        Commentaire::deleteCommentaire($_POST['id_commentaire']);
+    }
+    if (isset($_POST['button_modify_commentaire']))
+    {
 
-        }
     }
 }
 ?>

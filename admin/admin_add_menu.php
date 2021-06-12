@@ -4,14 +4,14 @@ require_once('../includes/layouts/header_admin.php');
 if (isset($_POST['button_register']))
 {
     if  (isset($_POST['nom'])  && !empty($_POST['nom']) ) {
-        if (!Categorie::isInformationExist($_POST['nom']))
+        if (!Menu::isInformationExist($_POST['nom']))
         {
-            Categorie::insertCategorie($_POST['nom']);
-            $_SESSION['alert'] = Main::alert('success', 'Catégorie ajouté avec succès');
+            Menu::insertMenu($_POST['nom']);
+            $_SESSION['alert'] = Main::alert('success', 'Menu ajouté avec succès');
         }
         else
         {
-            $_SESSION['alert'] = Main::alert('danger', 'Le nom de la catégorie est déjà utilisé');
+            $_SESSION['alert'] = Main::alert('danger', 'Le nom du menu est déjà utilisé');
         }
     }
     else{
@@ -28,7 +28,7 @@ if (isset($_POST['button_register']))
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2><i class="fas fa-book-open"></i> Ajout d'une catégorie</h2>
+                <h2><i class="fas fa-ellipsis-h"></i> Ajout d'un menu</h2>
                 <hr>
             </div>
             <div class="col-lg-12">
@@ -42,10 +42,10 @@ if (isset($_POST['button_register']))
                         <form method="POST">
 
                             <div class="form-group">
-                                <input type="text" class="form-control w-50" id="nom" name="nom" placeholder="Nom de la catégorie">
+                                <input type="text" class="form-control w-50" id="nom" name="nom" placeholder="Nom du menu">
                             </div>
 
-                            <button type="submit" name="button_register" class="btn btn-primary">Ajouter la catégorie</button>
+                            <button type="submit" name="button_register" class="btn btn-primary">Ajouter le menu</button>
                         </form>
                     </div>
                 </center>

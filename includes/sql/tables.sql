@@ -41,7 +41,7 @@ CREATE TABLE Article(
    id_article INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    titre VARCHAR(255) NOT NULL,
    image VARCHAR(255) NOT NULL,
-   contenu VARCHAR(255) NOT NULL,
+   contenu LONGTEXT NOT NULL,
    id_categorie INT NOT NULL,
    id_utilisateur INT NOT NULL,
    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -74,5 +74,18 @@ INSERT INTO `Categorie` (`id_categorie`, `nom`) VALUES
 (2, 'Dancefloor'),
 (3, 'Monde');
 COMMIT;
+
+INSERT INTO `Menu` (`id_menu`, `nom`) VALUES
+(1, 'navbar');
+COMMIT;
+
+INSERT INTO `menu_items` (`id_menu_items`, `nom`, `lien`, `ordre`, `id_menu`, `parent_id`) VALUES
+(1, 'Lifestyle', '#', 1, 1, NULL),
+(2, 'Mode', '#', 2, 1, NULL),
+(3, 'Catégorie', '#', 3, 1, NULL),
+(4, 'Catégorie 1', '#', 1, 1, 3),
+(5, 'Catégorie 2', '#', 1, 1, 3);
+COMMIT;
+
 
 
