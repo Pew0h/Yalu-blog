@@ -10,7 +10,7 @@ $article = Article::getArticleById($id);
 
 
 ?>
-<section class="body">
+<section class="body container">
 
 
 <section class="header">
