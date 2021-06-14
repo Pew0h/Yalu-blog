@@ -4,7 +4,7 @@
     $numberCom = Commentaire::getNumberCommentairesArticle($id);
     $article = Article::getArticleById($id);
 ?>
-    <section class="body">
+    <section class="body container">
         <section class="header">
             <h1><?= $article['titre']?></h1>
             <div class="link">
