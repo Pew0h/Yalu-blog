@@ -19,6 +19,8 @@ require_once('../includes/layouts/header_admin.php');
         }
         if (isset($_POST['button_modify_item']))
         {
+            header('Location: admin_menu_items_modify.php?id_item='.$_POST['id_menu_items'].'&id_menu='. $id_menu);
+            exit;
         }
     }
 ?>

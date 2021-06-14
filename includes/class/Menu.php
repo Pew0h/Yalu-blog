@@ -52,6 +52,15 @@ class Menu
         return $request->rowCount() >= 1;
     }
 
+    public static function isItemIdExist($id)
+    {
+        $request = Database::getInstance()->prepare('SELECT id_menu_items FROM menu_items WHERE id_menu_items = :id');
+        $request->execute(array(
+            'id' => $id
+        ));
+        return $request->rowCount() >= 1;
+    }
+
     public static function isInformationExistAdmin(string $nom, int $id)
     {
         $request = Database::getInstance()->prepare('SELECT nom FROM menu WHERE nom = :menu_nom AND id_menu != :id');
@@ -128,11 +137,46 @@ class Menu
         ));
     }
 
+    public static function updateItem(int $id_menu_items, string $nom, string $lien, ?int $parent_id){
+        $database = Database::getInstance();
+        $request = $database->prepare('UPDATE menu_items SET nom = :item_nom, lien = :item_lien, parent_id = :parent_id WHERE id_menu_items = :id_menu_items');
+        $request->execute(array(
+            'id_menu_items' => $id_menu_items,
+            'item_nom' => $nom,
+            'item_lien' => $lien,
+            'parent_id' => $parent_id
+        ));
+    }
+
     public static function deleteItem(int $id)
     {
         $requestItems = Database::getInstance()->prepare('DELETE FROM menu_items WHERE id_menu_items = :id');
         $requestItems->execute(array(
             'id' => $id,
         ));
+    }
+
+    public static function isParent(int $id)
+    {
+        $requestItems = Database::getInstance()->prepare('SELECT * FROM menu_items WHERE id_menu_items = :id AND parent_id IS NOT NULL');
+        $requestItems->execute(array(
+            'id' => $id,
+        ));
+        return $requestItems->rowCount() > 0;
+    }
+
+    public static function getItemInformation(int $id, string $colonne) : string
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('SELECT '.$colonne.' FROM menu_items WHERE id_menu_items = :id');
+        $request->execute(array(
+            'id' => $id
+        ));
+        while($data = $request->fetch()){
+            if ($data[$colonne])
+                return $data[$colonne];
+            else
+                return false;
+        }
     }
 }
