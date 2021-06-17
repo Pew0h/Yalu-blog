@@ -55,6 +55,19 @@ class Article
         return $data;
     }
 
+    public static function insertArticle(string $titre, string $contenu, ?string $image, int $id_categorie, int $id_utilisateur)
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('INSERT INTO article(titre, contenu, image, id_categorie, id_utilisateur) VALUES (:titre, :contenu, :image, :id_categorie, :id_utilisateur)');
+        $request->execute(array(
+            'titre' => $titre,
+            'contenu' => $contenu,
+            'image' => $image,
+            'id_categorie' => $id_categorie,
+            'id_utilisateur' => $id_utilisateur,
+        ));
+    }
+
     public static function deleteArticle($id_article)
     {
         $request = Database::getInstance()->prepare('DELETE FROM article WHERE id_article = :id');

@@ -11,7 +11,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card h-100">
                     <div class="single-post post-style-1">
-                        <div class="blog-image"><img src="<?= 'includes/images/' . $img?>" alt="Blog Image"></div>
+                        <div class="blog-image"><img src="<?= 'includes/images/article/' . $img?>" alt="Blog Image"></div>
                         <div class="blog-info">
                             <h6><a href="#"><b><?= $article['categorie_nom']?></b></a></h6>
                             <hr>

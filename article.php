@@ -15,7 +15,7 @@
 
             <?php
                 if (!empty($article['image']))
-                    echo '<img src="includes/images/'.$article['image'].'" alt="">';
+                    echo '<img src="includes/images/article/'.$article['image'].'" alt="">';
                 else
                     echo '<img src="https://www.fermeturegarage.com/template/img/no-image.png" alt="">';
             ?>
@@ -25,7 +25,7 @@
         <section class="content">
             <h1><?= $article['titre']?></h1>
             <div class="article-content">
-                <p>ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un article mais d'un test d'article ceci est un test, il ne sagit pas d'un </p>
+                <?= $article['contenu']?>
             </div>
         </section>
 
@@ -37,7 +37,7 @@
                     $randomArticle = Article::getArticleById($randomId['id_article']); ?>
                     <div class="randomArticle">
                         <?php if (!empty($randomArticle['image'])){ ?>
-                            <img src="includes/images/<?= $randomArticle['image'] ?>" alt="">
+                            <img src="includes/images/article/<?= $randomArticle['image'] ?>" alt="">
                             <a href="#"><?= $randomArticle['titre']?></a>
                         <?php }else{ ?>
                             <img src="https://www.fermeturegarage.com/template/img/no-image.png" alt="">

@@ -14,9 +14,6 @@ SECTION HEADER
 .header{
     display: flex;
     flex-direction: column;
-
-
-
 }
 
 .header h1{
