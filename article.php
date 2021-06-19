@@ -12,12 +12,10 @@
                 <h4><?= $numberCom, " " ?> Commentaires</h4>
                 <h4>- <?= $article['date_creation']?></h4>
             </div>
-
             <?php
                 if (!empty($article['image']))
                     echo '<img src="includes/images/article/'.$article['image'].'" alt="">';
             ?>
-
         </section>
 
         <section class="content">
@@ -53,7 +51,7 @@
                         <p><?= " le ", $commentaire['date_creation']?></p>
                     </div>
                     <div class="content-commentaire">
-                        <p><?= $commentaire['commentaire']?></p>
+                        <p><?= utf8_encode($commentaire['commentaire'])?></p>
                     </div>
                 </div>
                 <hr>

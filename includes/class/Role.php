@@ -62,7 +62,7 @@ class Role
             'user_id' => $id
         ));
         while($data = $request->fetch()){
-            return $data['nom'];
+            return utf8_encode($data['nom']);
         }
     }
     public static function getRoles($recherche = '')

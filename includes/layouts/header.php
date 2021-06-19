@@ -48,8 +48,10 @@ if(isset($_GET['logout']))
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" style="font-size: large" href="index.php">Accueil</a>
-            <a class="nav-item nav-link active" style="font-size: large" href="create_article.php">Ajouter article</a>
+
             <?php
+            if (isset($_SESSION['user_id']) && Role::getUserRole($_SESSION['user_id']) != 'Éditeur')
+                echo '<a class="nav-item nav-link active" style="font-size: large" href="create_article.php">Ajouter article</a>';
             foreach (Menu::getMenuItems(4) as $menuItem) {
                 if ($menuItem['parent'] == 1)
                 {
