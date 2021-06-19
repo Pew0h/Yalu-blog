@@ -8,22 +8,19 @@
         <section class="header">
             <h1><?= $article['titre']?></h1>
             <div class="link">
-                <h4><?= $article['categorie_nom']?> </h4>
+                <h4><?= $article['categorie_nom']?> -</h4>
                 <h4><?= $numberCom, " " ?> Commentaires</h4>
-                <h4><?= 'Le ', $article['date_creation']?></h4>
+                <h4>- <?= $article['date_creation']?></h4>
             </div>
 
             <?php
                 if (!empty($article['image']))
                     echo '<img src="includes/images/article/'.$article['image'].'" alt="">';
-                else
-                    echo '<img src="https://www.fermeturegarage.com/template/img/no-image.png" alt="">';
             ?>
 
         </section>
 
         <section class="content">
-            <h1><?= $article['titre']?></h1>
             <div class="article-content">
                 <?= $article['contenu']?>
             </div>

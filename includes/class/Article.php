@@ -21,6 +21,24 @@ class Article
         return $data;
     }
 
+    public static function getArticlesIndex(?int $id)
+    {
+        if ($id)
+            $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
+                                                   LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
+                                                   LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
+                                                   WHERE categorie.id_categorie = '$id'";
+        else
+            $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
+                                                   LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
+                                                   LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur";
+        $request = Database::getInstance()->query($SQL);
+        $data = $request->fetchAll();
+        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun article trouvé');
+        else $_SESSION['alert'] = '';
+        return $data;
+    }
+
     public static function truncate($string, $max_length = 30, $replacement = '', $trunc_at_space = false)
     {
         $max_length -= strlen($replacement);

@@ -1,8 +1,15 @@
+<?php
+
+if (isset($_GET['id']))
+    $id = $_GET['id'];
+else
+    $id = null;
+?>
 <section class="blog-area section">
     <div class="container">
         <div class="row">
             <?php
-            foreach (Article::getArticles() as $article) {
+            foreach (Article::getArticlesIndex($id) as $article) {
                 $img = $article['image'];
             if (!empty($img)){
                 $contenu_trunc = Article::truncate($article['contenu'], 75, '...', true);
@@ -13,7 +20,7 @@
                     <div class="single-post post-style-1">
                         <div class="blog-image"><img src="<?= 'includes/images/article/' . $img?>" alt="Blog Image"></div>
                         <div class="blog-info">
-                            <h6><a href="#"><b><?= $article['categorie_nom']?></b></a></h6>
+                            <h6><a href="index.php?id=<?= $article['id_categorie'] ?>"><b><?= $article['categorie_nom']?></b></a></h6>
                             <hr>
                             <h4 class="title"><a href="#"><b><?= $article['titre']?></b></a></h4>
                             <a href="article.php?id=<?= $article['id_article']?>" class="button" ><i class="ion-pricetag"></i>  Voir l'article </a>
@@ -34,7 +41,7 @@
                 <div class="card h-100">
                     <div class="single-post">
                         <div class="blog-info">
-                            <h6><a href="#"><b><?= $article['categorie_nom']?></b></a></h6>
+                            <h6><a href="index.php?id=<?= $article['id_categorie'] ?>"><b><?= $article['categorie_nom']?></b></a></h6>
                             <hr>
                             <h4 class="title"><a href="#"><b><?= $article['titre']?></b></a></h4>
                             <p class="blog-contenu"><?= $contenu_trunc?></p>

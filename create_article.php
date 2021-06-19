@@ -81,7 +81,7 @@ if (isset($_POST['add_article']))
     var quill = new Quill('#editeur-contenue', {
         modules: {
             toolbar: [
-                [{ header: [1, 2, false] }],
+                [{ header: [3, 4, false] }],
                 [{ 'font': [] }],
                 [{ 'color': [] }, { 'background': [] }],
                 ['bold', 'italic', 'underline', 'strike', 'blockquote'],

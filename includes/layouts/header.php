@@ -47,7 +47,8 @@ if(isset($_GET['logout']))
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" style="font-size: large" href="#">Accueil <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" style="font-size: large" href="index.php">Accueil</a>
+            <a class="nav-item nav-link active" style="font-size: large" href="create_article.php">Ajouter article</a>
             <?php
             foreach (Menu::getMenuItems(4) as $menuItem) {
                 if ($menuItem['parent'] == 1)
