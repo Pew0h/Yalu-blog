@@ -6,6 +6,11 @@ class Article
         $request = Database::getInstance()->query('SELECT count(*) FROM article');
         return $request->fetch()[0];
     }
+    public static function getNumberArticlesWithCategory(int $id)
+    {
+        $request = Database::getInstance()->query("SELECT count(*) FROM article WHERE id_categorie = '$id'");
+        return $request->fetch()[0];
+    }
 
     public static function getArticles($recherche = '')
     {
@@ -32,6 +37,28 @@ class Article
             $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
                                                    LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
                                                    LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur";
+        $request = Database::getInstance()->query($SQL);
+        $data = $request->fetchAll();
+        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun article trouvé');
+        else $_SESSION['alert'] = '';
+        return $data;
+    }
+
+    public static function getArticlesList(?int $id)
+    {
+        if (isset($_POST['page']))
+            $limit = $_POST['page'] + 2;
+        else
+            $limit = 2;
+        if ($id)
+            $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
+                                                   LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
+                                                   LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
+                                                   WHERE categorie.id_categorie = '$id' LIMIT $limit";
+        else
+            $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
+                                                   LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
+                                                   LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur LIMIT $limit";
         $request = Database::getInstance()->query($SQL);
         $data = $request->fetchAll();
         if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun article trouvé');

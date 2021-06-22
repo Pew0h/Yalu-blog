@@ -18,7 +18,10 @@ class Commentaire
     public static function getCommentairesArticle($id_article)
     {
 
-        $request = Database::getInstance()->prepare("SELECT *, DATE_FORMAT(commentaire.date_creation, '%d/%m/%Y') as date_creation FROM commentaire LEFT OUTER JOIN utilisateur ON commentaire.id_utilisateur = utilisateur.id_utilisateur WHERE id_article = :id ");
+        $request = Database::getInstance()->prepare("SELECT *, DATE_FORMAT(commentaire.date_creation, '%d/%m/%Y') as date_creation 
+                                                     FROM commentaire 
+                                                     LEFT OUTER JOIN utilisateur ON commentaire.id_utilisateur = utilisateur.id_utilisateur 
+                                                     WHERE id_article = :id ");
 
         $request->execute(array(
             'id' => $id_article
@@ -32,9 +35,10 @@ class Commentaire
         if (isset($_POST['recherche'])) $recherche = $_POST['recherche'];
         $request = Database::getInstance()->query("SELECT *, DATE_FORMAT(commentaire.date_creation, '%d/%m/%Y') as date_creation FROM commentaire 
                                                    LEFT OUTER JOIN utilisateur ON commentaire.id_utilisateur = utilisateur.id_utilisateur
+                                                   LEFT OUTER JOIN article ON article.id_article = commentaire.id_article
                                                    WHERE commentaire.commentaire LIKE '%$recherche%' OR utilisateur.pseudo LIKE '%$recherche%'");
         $data = $request->fetchAll();
-        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun comementaire trouvé');
+        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun commentaire trouvé');
         else $_SESSION['alert'] = '';
         return $data;
     }
