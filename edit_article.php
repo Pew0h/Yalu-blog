@@ -1,35 +1,40 @@
 <?php
 require_once ('./includes/layouts/header.php');
 
-if (!isset($_SESSION['user_id'])){
-    header('Location: index.php');
-    exit;
-}
-
-elseif (isset($_SESSION['user_id']) && Role::getUserRole($_SESSION['user_id']) == 'Éditeur')
+if ($_GET['id'])
 {
-    header('Location: index.php');
-    exit;
-}
-
-if (isset($_POST['add_article']))
-{
-    $article_image = NULL;
-    // Gestion de l'ajout d'une image
-    if (isset($_FILES['image_article']))
-    {
-        $tmpFile = $_FILES['image_article']['tmp_name'];
-        $newPath = 'includes/images/article/'. $_FILES['image_article']['name'];
-        if(!move_uploaded_file($tmpFile ,$newPath))
-        {
-            $_SESSION['alert'] = Main::alert('danger', 'Impossible de charger l\'image');
-        }
-        $article_image = $_FILES['image_article']['name'];
+    $id = $_GET['id'];
+    if (!Article::getArticleById($id)){ // Si l'article n'existe pas
+        header('Location: index.php');
+        exit;
     }
+}
+else{
+    header('Location: index.php');
+    exit;
+}
+
+if (isset($_SESSION['user_id'])){
+    if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur' || Article::getArticleInformation($id, 'id_utilisateur') == $_SESSION['user_id']){
+    }
+    else{
+        header('Location: index.php');
+        exit;
+    }
+}
+
+else
+{
+    header('Location: index.php');
+    exit;
+}
+
+if (isset($_POST['modify_article']))
+{
     if (isset($_POST['titre']) && !empty($_POST['titre']) && isset($_POST['contenue-html']) && !empty($_POST['contenue-html']))
     {
-        Article::insertArticle($_POST['titre'], $_POST['contenue-html'], $article_image, $_POST['select_categorie'], $_SESSION['user_id']);
-        $_SESSION['alert'] = Main::alert('success', 'Ajout de l\'article avec succès !');
+        Article::updateArticle($id, $_POST['titre'], $_POST['contenue-html'], $_POST['select_categorie']);
+        $_SESSION['alert'] = Main::alert('success', 'Modification de l\'article avec succès !');
     }
     else{
         $_SESSION['alert'] = Main::alert('danger', 'Veuillez remplir tous les champs requis !');
@@ -39,7 +44,7 @@ if (isset($_POST['add_article']))
 ?>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <h2> Création d'un article </h2>
+    <h2> Modification de l'article </h2>
     <br>
     <center>
         <form id="article-form" method="POST" action="" enctype="multipart/form-data">
@@ -51,16 +56,15 @@ if (isset($_POST['add_article']))
                 ?>
                 <div class="form-group">
                     <label class="form-inline" style="font-weight: bold">Titre de l'article</label>
-                    <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre">
+                    <input type="text" class="form-control" id="titre" name="titre" value="<?= Article::getArticleInformation($id, 'titre') ?>">
                 </div>
                 <div class="form-group">
                     <label class="form-inline" style="font-weight: bold">Contenue de l'article</label>
                     <div style="height: 350px" id="editeur-contenue" name="editeur-contenue">
+                        <?= Article::getArticleInformation($id, 'contenu') ?>
                     </div>
                 </div>
                 <div class="form-group form-inline">
-                    <label style="font-weight: bold">Choisir une image : &nbsp;</label>
-                    <input type="file" name="image_article">
                     <input type="hidden" name="contenue-html" id="contenue-html">
                 </div>
                 <div class="form-group form-inline">
@@ -69,14 +73,17 @@ if (isset($_POST['add_article']))
                         <?php
                         foreach (Categorie::getCategories() as $category)
                         {
-                            echo '<option value="'.$category['id_categorie'].'">'.$category['nom'].'</option>';
+                            if (Article::getArticleInformation($id, 'id_categorie') == $category['id_categorie'])
+                                echo '<option selected="selected" value="'.$category['id_categorie'].'">'.$category['nom'].'</option>';
+                            else
+                                echo '<option value="'.$category['id_categorie'].'">'.$category['nom'].'</option>';
                         }
 
                         ?>
                     </select>
                 </div>
                 <div class="col text-center">
-                    <button style="width: 200px" type="submit" name="add_article" id="add_article" class="button">Ajouter l'article</button>
+                    <button style="width: 200px" type="submit" name="modify_article" id="modify_article" class="button">Modifier l'article</button>
                 </div>
             </div>
         </form>>
@@ -101,7 +108,7 @@ if (isset($_POST['add_article']))
 
 
     // When the submit button is clicked, update output
-    $('#add_article').on('click', () => {
+    $('#modify_article').on('click', () => {
         // Get HTML content
         var html = quill.root.innerHTML;
         $('#contenue-html').val(html)

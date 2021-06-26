@@ -1,15 +1,16 @@
 <?php
 require_once('../includes/layouts/header_admin.php');
 
-if (isset($_POST['id_commentaire']))
+if (isset($_POST['id_article']))
 {
     if (isset($_POST['button_delete_article']))
     {
-        Article::deleteArticle($_POST['id_commentaire']);
+        Article::deleteArticle($_POST['id_article']);
     }
     if (isset($_POST['button_modify_article']))
     {
-
+        header('Location: ../edit_article.php?id='.$_POST['id_article']);
+        exit;
     }
 }
 ?>
@@ -52,7 +53,7 @@ if (isset($_POST['id_commentaire']))
                     <?php
                     foreach (Article::getArticles() as $article) {
                         echo '<form method="POST"><tr>';
-                        echo '<input type="hidden" name="id_commentaire" id="id_commentaire" value="' .$article['id_article'].'">';
+                        echo '<input type="hidden" name="id_article" id="id_article" value="' .$article['id_article'].'">';
                         echo '<th scope="row">'.$article['id_article'].'</th>';
                         echo '<td>'.$article['titre'].'</td>';
                         echo '<td>'.$article['categorie_nom'].'</td>';

@@ -113,6 +113,30 @@ class Article
         ));
     }
 
+    public static function updateArticle(int $id_article, string $titre, string $contenu, int $id_categorie)
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('UPDATE article SET titre = :titre, contenu = :contenu, id_categorie = :id_categorie WHERE id_article = :id_article');
+        $request->execute(array(
+            'id_article' => $id_article,
+            'titre' => $titre,
+            'contenu' => $contenu,
+            'id_categorie' => $id_categorie
+        ));
+    }
+
+    public static function getArticleInformation(int $id, string $colonne) : string
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('SELECT '.$colonne.' FROM article WHERE id_article = :id');
+        $request->execute(array(
+            'id' => $id
+        ));
+        while($data = $request->fetch()){
+            return $data[$colonne];
+        }
+    }
+
     public static function deleteArticle($id_article)
     {
         $request = Database::getInstance()->prepare('DELETE FROM article WHERE id_article = :id');

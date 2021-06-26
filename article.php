@@ -1,6 +1,17 @@
 <?php
     require_once ('./includes/layouts/header.php');
-    $id = $_GET['id'];
+    if ($_GET['id'])
+    {
+        $id = $_GET['id'];
+        if (!Article::getArticleById($id)){ // Si l'article n'existe pas
+            header('Location: index.php');
+            exit;
+        }
+    }
+    else{
+        header('Location: index.php');
+        exit;
+    }
     $numberCom = Commentaire::getNumberCommentairesArticle($id);
     $article = Article::getArticleById($id);
 ?>
@@ -25,6 +36,18 @@
         </section>
 
         <section class="voir-plus">
+            <?php
+                if (isset($_SESSION['user_id']))
+                {
+                    if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur' || Article::getArticleInformation($id, 'id_utilisateur') == $_SESSION['user_id'])
+                    {
+                        echo '<div class="col-12 mb-3 text-center">
+                                <a href="edit_article.php?id='.$id.'" class="btn btn-warning">Modifier l\'article</a>
+                              </div>';
+                    }
+                }
+
+            ?>
             <h4>Vous aimeriez surement aussi : </h4>
             <div class="article-container">
                 <?php for ($i = 0; $i < 4; $i++) { ?>

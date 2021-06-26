@@ -4,7 +4,7 @@
     require_once('./includes/class/Commentaire.php');
     //echo var_dump($_GET);
     $html = ""; // on instancie la sortie html
-    $limit = 2; // on limite un affichage de 6 articles par 6 articles
+    $limit = 6; // on limite un affichage de 6 articles par 6 articles
     $i = 0;
 
     if (isset($_GET['page_no'])) { // Si ajax nous renvoi un nombre de page alors on instancie le nombre de page actuel
@@ -20,7 +20,7 @@
         $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
                                                        LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
                                                        LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
-                                                       WHERE categorie.id_categorie = '$id' LIMIT $page, $limit";
+                                                       WHERE categorie.id_categorie = '$id' ORDER BY date_creation LIMIT $page, $limit";
     }
     else
     {
@@ -28,7 +28,7 @@
         $id = null;
         $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
                                                        LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
-                                                       LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur LIMIT $page, $limit";
+                                                       LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur ORDER BY date_creation LIMIT $page, $limit";
     }
     $request = Database::getInstance()->query($SQL);
     $data = $request->fetchAll();
