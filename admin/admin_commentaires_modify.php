@@ -3,27 +3,21 @@ require_once('../includes/layouts/header_admin.php');
 
 if (isset($_GET['id']))
 {
-    if(Categorie::isCategorieIdExist($_GET['id']))
+    if(Commentaire::isCommentaireIdExist($_GET['id']))
     {
         if (isset($_POST['button_modify']))
         {
-            if (isset($_POST['nom']) && !empty($_POST['nom']))
+            if (isset($_POST['commentaire']) && !empty($_POST['commentaire']))
             {
-                if (Categorie::isInformationExistAdmin($_POST['nom'], $_GET['id']))
-                {
-                    $_SESSION['alert'] = Main::alert('danger', 'Nom de catégorie déjà utilisée');
-                }
-                else
-                {
-                    Categorie::updateCategorie($_POST['nom'], $_GET['id']);
-                    $_SESSION['alert'] = Main::alert('success', 'Modification de la catégorie avec succès');
-                }
+                Commentaire::updateCommentaire($_POST['commentaire'], $_GET['id']);
+                header('location: admin_commentaires.php');
+
             }
         }
     }
     else
     {
-        header('Location: admin_categories.php');
+        header('Location: admin_commentaires.php');
         exit;
     }
 
@@ -38,7 +32,7 @@ if (isset($_GET['id']))
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2><i class="fas fa-book-open"></i> Modification d'une catégorie</h2>
+                <h2><i class="fas fa-comments"></i> Modification d'un commentaire</h2>
                 <hr>
             </div>
             <div class="col-lg-12">
@@ -52,11 +46,11 @@ if (isset($_GET['id']))
                         <form method="POST">
                             <div class="input-group mb-3 w-50">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon3">Nom </span>
+                                    <span class="input-group-text" style="width: 120px" id="basic-addon3">Commentaire </span>
                                 </div>
-                                <input type="text" class="form-control w-50" id="nom" name="nom" value="<?= Categorie::getCategorieName($_GET['id']) ?>">
+                                <textarea  type="text" class="form-control w-50" id="commentaire" name="commentaire" cols="60" rows="4"><?= Commentaire::getCommentairesById($_GET['id'])[0][0] ?></textarea>
                             </div>
-                            <button type="submit" name="button_modify" class="btn btn-primary">Modifer la catégorie</button>
+                            <button type="submit" name="button_modify" class="btn btn-primary">Modifer le commentaire</button>
                         </form>
                     </div>
                 </center>
