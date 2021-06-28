@@ -63,7 +63,7 @@ POST FOOTER ( date / commentaires )
 
 .single-post .post-footer > li:last-child{ border: 0px; float: right; width: 30%; }
 
-.single-post .post-footer > li > a{ line-height: 45px; width: 100%; }
+.single-post .post-footer > li { line-height: 40px; width: 100%; }
 
 .single-post .post-footer i{ display: inline-block; margin-right: 10px; opacity: .6; font-size: 1.1em; }
 
@@ -73,5 +73,10 @@ POST FOOTER ( date / commentaires )
 --------------------------------- */
 
 .post-style-1 .blog-image{ max-height: 200px; overflow: hidden; }
+
+.post-style-1 .blog-image img {
+    height: 240px;
+    object-fit: fill;
+}
 
 

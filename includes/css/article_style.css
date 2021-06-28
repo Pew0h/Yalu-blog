@@ -17,6 +17,10 @@ SECTION HEADER
     flex-direction: column;
 }
 
+.header img{
+    object-fit: contain;
+}
+
 .header h1{
     margin-top: 20px;
     margin-left: 50px;

@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="929a1f94-1fca-4fca-bf17-714c381f5da8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/admin_commentaires_modify.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/edit_commentaire.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_categorie_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_categorie_modify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_commentaires.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article.php" beforeDir="false" afterPath="$PROJECT_DIR$/article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/class/Commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Commentaire.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/css/article_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/article_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/css/card_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/card_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loadArticleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/loadArticleData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +105,7 @@
       <workItem from="1623395327122" duration="1281000" />
       <workItem from="1623408986939" duration="31000" />
       <workItem from="1623425146353" duration="5248000" />
-      <workItem from="1624891192202" duration="21506000" />
+      <workItem from="1624891192202" duration="23169000" />
     </task>
     <servers />
   </component>
