@@ -77,11 +77,26 @@ class Article
         return substr_replace($string, $replacement, $max_length);
     }
 
-    public static function getRandomId()
+    public static function getRandomId(int $id, int $id_cat)
     {
-        $randomId = Database::getInstance()->query("SELECT id_article FROM article ORDER BY RAND() LIMIT 1");
+        $randomId = Database::getInstance()->prepare("SELECT id_article FROM article WHERE id_article != :id AND id_categorie = :id_cat ORDER BY RAND() LIMIT 1 ");
+        $randomId->execute(array(
+            'id' => $id,
+            'id_cat' => $id_cat
+        ));
+        $data = $randomId->fetchAll();
+        return $data[0]['id_article'];
 
-        $data = $randomId->fetch();
+    }
+
+    public static function getArticleByCategorie(int $id, int $id_cat)
+    {
+        $randomId = Database::getInstance()->prepare("SELECT * FROM article WHERE id_article != :id AND id_categorie = :id_cat ORDER BY RAND() LIMIT 1 ");
+        $randomId->execute(array(
+            'id' => $id,
+            'id_cat' => $id_cat
+        ));
+        $data = $randomId->fetchAll();
         return $data;
 
     }

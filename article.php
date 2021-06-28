@@ -50,21 +50,44 @@
             ?>
             <h4>Vous aimeriez surement aussi : </h4>
             <div class="article-container">
-                <?php for ($i = 0; $i < 4; $i++) { ?>
-                    <?php $randomId = Article::getRandomId();
-                    $randomArticle = Article::getArticleById($randomId['id_article']); ?>
-                    <div class="randomArticle">
-                        <?php if (!empty($randomArticle['image'])){ ?>
-                            <img src="includes/images/article/<?= $randomArticle['image'] ?>" alt="">
-                            <a href="#"><?= $randomArticle['titre']?></a>
-                        <?php }else{ ?>
-                            <img src="https://www.fermeturegarage.com/template/img/no-image.png" alt="">
-                            <a href="#"><?= $randomArticle['titre'] ?></a>
-                        <?php } ?>
-                    </div>
-                <?php } ?>
+
+            <?php
+
+            $tabArticles = [];
+            $numberArticle = Article::getNumberArticlesWithCategory($article['id_categorie']);
+
+            if ($numberArticle < 4 ){
+                $articles = Article::getArticleByCategorie($id, $article['id_categorie']);
+
+                }else{
+                   while (count($tabArticles) <4 ) {
+                       $randomId = Article::getRandomId($id, $article['id_categorie']);
+                        if ($randomId == $id){
+                            return;
+                        }
+                        if (!isset($tabArticles[$randomId])) {
+                            $tabArticles[$randomId] = Article::getArticleById($randomId);
+                        }
+                    }
+                    $articles = $tabArticles;
+                }
+
+            foreach ($articles as $key => $article) {
+                echo '<div class="randomArticle">';
+                if (!empty($article['image'])) {
+                    echo '<img src="includes/images/article/' . $article['image'] . ' " alt="">
+                          <a href="article.php?id=' . $article['id_article'] . '"> ' . $article['titre'] . '</a>';
+                } else {
+                    echo '<img src="https://www.fermeturegarage.com/template/img/no-image.png" alt="">
+                          <a href="article.php?id=' . $article['id_article'] . '">' . $article['titre'] . '</a>';
+                }
+                echo '</div>';
+            }?>
+
             </div>
-        </section>
+
+       </section>
+
         <section class="commentaire-area">
             <h3><?= $numberCom ?> Commentaire : </h3>
             <?php foreach (Commentaire::getCommentairesArticle($id) as $commentaire){ ?>
@@ -79,6 +102,9 @@
                 </div>
                 <hr>
             <?php } ?>
+
+
+            </form>
         </section>
     </section>
 <?php
