@@ -6,6 +6,11 @@ class Article
         $request = Database::getInstance()->query('SELECT count(*) FROM article');
         return $request->fetch()[0];
     }
+    public static function getNumberArticlesWithCategory(int $id)
+    {
+        $request = Database::getInstance()->query("SELECT count(*) FROM article WHERE id_categorie = '$id'");
+        return $request->fetch()[0];
+    }
 
     public static function getArticles($recherche = '')
     {
@@ -15,6 +20,46 @@ class Article
                                                    LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
                                                    WHERE article.titre LIKE '%$recherche%' OR categorie.nom LIKE '%$recherche%' 
                                                    OR utilisateur.pseudo LIKE '%$recherche%'");
+        $data = $request->fetchAll();
+        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun article trouvé');
+        else $_SESSION['alert'] = '';
+        return $data;
+    }
+
+    public static function getArticlesIndex(?int $id)
+    {
+        if ($id)
+            $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
+                                                   LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
+                                                   LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
+                                                   WHERE categorie.id_categorie = '$id'";
+        else
+            $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
+                                                   LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
+                                                   LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur";
+        $request = Database::getInstance()->query($SQL);
+        $data = $request->fetchAll();
+        if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun article trouvé');
+        else $_SESSION['alert'] = '';
+        return $data;
+    }
+
+    public static function getArticlesList(?int $id)
+    {
+        if (isset($_POST['page']))
+            $limit = $_POST['page'] + 2;
+        else
+            $limit = 2;
+        if ($id)
+            $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
+                                                   LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
+                                                   LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur
+                                                   WHERE categorie.id_categorie = '$id' LIMIT $limit";
+        else
+            $SQL = "SELECT *, categorie.nom as categorie_nom, DATE_FORMAT(article.date_creation, '%d/%m/%Y') as date_creation FROM article 
+                                                   LEFT OUTER JOIN categorie ON article.id_categorie = categorie.id_categorie
+                                                   LEFT OUTER JOIN utilisateur ON article.id_utilisateur = utilisateur.id_utilisateur LIMIT $limit";
+        $request = Database::getInstance()->query($SQL);
         $data = $request->fetchAll();
         if($data == false) $_SESSION['alert'] = Main::alert('danger', 'Aucun article trouvé');
         else $_SESSION['alert'] = '';
@@ -53,9 +98,43 @@ class Article
 
         $data = $request->fetch();
         return $data;
+    }
 
+    public static function insertArticle(string $titre, string $contenu, ?string $image, int $id_categorie, int $id_utilisateur)
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('INSERT INTO article(titre, contenu, image, id_categorie, id_utilisateur) VALUES (:titre, :contenu, :image, :id_categorie, :id_utilisateur)');
+        $request->execute(array(
+            'titre' => $titre,
+            'contenu' => $contenu,
+            'image' => $image,
+            'id_categorie' => $id_categorie,
+            'id_utilisateur' => $id_utilisateur,
+        ));
+    }
 
+    public static function updateArticle(int $id_article, string $titre, string $contenu, int $id_categorie)
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('UPDATE article SET titre = :titre, contenu = :contenu, id_categorie = :id_categorie WHERE id_article = :id_article');
+        $request->execute(array(
+            'id_article' => $id_article,
+            'titre' => $titre,
+            'contenu' => $contenu,
+            'id_categorie' => $id_categorie
+        ));
+    }
 
+    public static function getArticleInformation(int $id, string $colonne) : string
+    {
+        $database = Database::getInstance();
+        $request = $database->prepare('SELECT '.$colonne.' FROM article WHERE id_article = :id');
+        $request->execute(array(
+            'id' => $id
+        ));
+        while($data = $request->fetch()){
+            return $data[$colonne];
+        }
     }
 
     public static function deleteArticle($id_article)

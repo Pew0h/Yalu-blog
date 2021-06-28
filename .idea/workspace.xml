@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0c30f3b-d768-459a-adbf-7d43b82aa41b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article.php" beforeDir="false" afterPath="$PROJECT_DIR$/article.php" afterDir="false" />
+    <list default="true" id="929a1f94-1fca-4fca-bf17-714c381f5da8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/admin/admin_menu_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_menu_items.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Commentaire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/layouts/card_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/layouts/card_article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/layouts/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/sql/tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/includes/sql/tables.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,71 +21,89 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="d4dcfe60-e10c-4546-9cee-bc906b9326ff" />
-        <option name="url" value="https://github.com/Pew0h/Yalu-blog.git" />
-      </UrlAndAccount>
-    </option>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
-  <component name="ProjectId" id="1s4Vo7Q5wCpDdbS3naIqxe2RvK4" />
+  <component name="ProjectId" id="1s1vh33ph8y2E3TvI08fauFMOSw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/includes/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/includes/css" />
+      <recent name="C:\wamp64\www\Yalu-blog\admin" />
+      <recent name="C:\wamp64\www\Yalu-blog\includes\class" />
+      <recent name="C:\wamp64\www\Yalu-blog\includes\css" />
+      <recent name="C:\wamp64\www\Yalu-blog" />
+      <recent name="C:\wamp64\www\Yalu-blog\includes\config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/includes" />
+      <recent name="C:\wamp64\www\Yalu-blog\admin" />
+      <recent name="C:\wamp64\www\Yalu-blog\includes\css" />
+      <recent name="C:\wamp64\www\Yalu-blog" />
+      <recent name="C:\wamp64\www\Yalu-blog\includes" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c0c30f3b-d768-459a-adbf-7d43b82aa41b" name="Default Changelist" comment="" />
-      <created>1620132020637</created>
+      <changelist id="929a1f94-1fca-4fca-bf17-714c381f5da8" name="Default Changelist" comment="" />
+      <created>1620053025517</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1620132020637</updated>
-      <workItem from="1620132023571" duration="9524000" />
-      <workItem from="1621268449191" duration="2404000" />
-      <workItem from="1621319798496" duration="6123000" />
-      <workItem from="1621525173294" duration="2828000" />
-      <workItem from="1621530476442" duration="6294000" />
-      <workItem from="1621602315949" duration="596000" />
-      <workItem from="1623394029075" duration="638000" />
-      <workItem from="1623423827253" duration="297000" />
-      <workItem from="1623425279896" duration="1330000" />
+      <updated>1620053025517</updated>
+      <workItem from="1620053028175" duration="6371000" />
+      <workItem from="1620121177671" duration="12226000" />
+      <workItem from="1620221285273" duration="864000" />
+      <workItem from="1620394678305" duration="2866000" />
+      <workItem from="1620404217753" duration="3407000" />
+      <workItem from="1620408456550" duration="5000" />
+      <workItem from="1620663567570" duration="4990000" />
+      <workItem from="1620983479476" duration="7019000" />
+      <workItem from="1621003875345" duration="3511000" />
+      <workItem from="1621086237000" duration="6397000" />
+      <workItem from="1621268277707" duration="308000" />
+      <workItem from="1621268615137" duration="17000" />
+      <workItem from="1621268634935" duration="1762000" />
+      <workItem from="1621323528103" duration="5517000" />
+      <workItem from="1621438425034" duration="5254000" />
+      <workItem from="1621497315682" duration="305000" />
+      <workItem from="1621524826013" duration="6597000" />
+      <workItem from="1621611337317" duration="5301000" />
+      <workItem from="1621863274055" duration="5258000" />
+      <workItem from="1621947938831" duration="389000" />
+      <workItem from="1623145318664" duration="4840000" />
+      <workItem from="1623164035123" duration="3798000" />
+      <workItem from="1623256064174" duration="2827000" />
+      <workItem from="1623327158484" duration="28000" />
+      <workItem from="1623395327122" duration="1281000" />
+      <workItem from="1623408986939" duration="31000" />
+      <workItem from="1623425146353" duration="5248000" />
     </task>
     <servers />
   </component>
@@ -92,24 +115,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="CUSTOM_BOOLEAN_PROPERTIES">
-                <map>
-                  <entry key="Show.Git.Branches" value="true" />
-                </map>
-              </option>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="Yann" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>

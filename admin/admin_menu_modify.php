@@ -1,29 +1,28 @@
 <?php
     require_once('../includes/layouts/header_admin.php');
-
     if (isset($_GET['id']))
     {
-        if(Categorie::isCategorieIdExist($_GET['id']))
+        if(Menu::isMenuIdExist($_GET['id']))
         {
             if (isset($_POST['button_modify']))
             {
                 if (isset($_POST['nom']) && !empty($_POST['nom']))
                 {
-                    if (Categorie::isInformationExistAdmin($_POST['nom'], $_GET['id']))
+                    if (Menu::isInformationExistAdmin($_POST['nom'], $_GET['id']))
                     {
-                        $_SESSION['alert'] = Main::alert('danger', 'Nom de catégorie déjà utilisée');
+                        $_SESSION['alert'] = Main::alert('danger', 'Nom du menu déjà utilisée');
                     }
                     else
                     {
-                        Categorie::updateCategorie($_POST['nom'], $_GET['id']);
-                        $_SESSION['alert'] = Main::alert('success', 'Modification de la catégorie avec succès');
+                        Menu::updateMenu($_POST['nom'], $_GET['id']);
+                        $_SESSION['alert'] = Main::alert('success', 'Modification du menu avec succès');
                     }
                 }
             }
         }
         else
         {
-            header('Location: admin_categories.php');
+            header('Location: admin_menus.php');
             exit;
         }
 
@@ -38,7 +37,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2><i class="fas fa-users"></i> Modification d'une catégorie</h2>
+                <h2><i class="fas fa-users"></i> Modification d'un menu</h2>
                 <hr>
             </div>
             <div class="col-lg-12">
@@ -54,9 +53,9 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon3">Nom </span>
                                 </div>
-                                <input type="text" class="form-control w-50" id="nom" name="nom" value="<?= Categorie::getCategorieName($_GET['id']) ?>">
+                                <input type="text" class="form-control w-50" id="nom" name="nom" value="<?= Menu::getMenuName($_GET['id']) ?>">
                             </div>
-                            <button type="submit" name="button_modify" class="btn btn-primary">Modifer la catégorie</button>
+                            <button type="submit" name="button_modify" class="btn btn-primary">Modifer le menu</button>
                         </form>
                     </div>
                 </center>

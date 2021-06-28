@@ -1,14 +1,6 @@
 <?php
 require_once('../includes/layouts/header_admin.php');
 
-if(isset($_SESSION['user_id'])) // Si appuie du bouton
-{
-    if (Role::getUserRole($_SESSION['user_id']) != 'Administrateur'){
-        header('Location: index.php');
-        exit;
-    }
-}
-
 if (isset($_POST['button_register']))
 {
     if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])
