@@ -38,7 +38,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2><i class="fas fa-users"></i> Modification d'une catégorie</h2>
+                <h2><i class="fas fa-book-open"></i> Modification d'une catégorie</h2>
                 <hr>
             </div>
             <div class="col-lg-12">
