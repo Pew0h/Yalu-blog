@@ -1,19 +1,19 @@
 <?php
-    require_once ('./includes/layouts/header.php');
-    if ($_GET['id'])
-    {
-        $id = $_GET['id'];
-        if (!Article::getArticleById($id)){ // Si l'article n'existe pas
-            header('Location: index.php');
-            exit;
-        }
-    }
-    else{
+require_once ('./includes/layouts/header.php');
+if ($_GET['id'])
+{
+    $id = $_GET['id'];
+    if (!Article::getArticleById($id)){ // Si l'article n'existe pas
         header('Location: index.php');
         exit;
     }
-    $numberCom = Commentaire::getNumberCommentairesArticle($id);
-    $article = Article::getArticleById($id);
+}
+else{
+    header('Location: index.php');
+    exit;
+}
+$numberCom = Commentaire::getNumberCommentairesArticle($id);
+$article = Article::getArticleById($id);
 ?>
     <section class="body container">
         <section class="header">
@@ -24,8 +24,8 @@
                 <h4>- <?= $article['date_creation']?></h4>
             </div>
             <?php
-                if (!empty($article['image']))
-                    echo '<img src="includes/images/article/'.$article['image'].'" alt="">';
+            if (!empty($article['image']))
+                echo '<img src="includes/images/article/'.$article['image'].'" alt="">';
             ?>
         </section>
 
@@ -37,32 +37,58 @@
 
         <section class="voir-plus">
             <?php
-                if (isset($_SESSION['user_id']))
+            if (isset($_SESSION['user_id']))
+            {
+                if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur' || Article::getArticleInformation($id, 'id_utilisateur') == $_SESSION['user_id'])
                 {
-                    if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur' || Article::getArticleInformation($id, 'id_utilisateur') == $_SESSION['user_id'])
-                    {
-                        echo '<div class="col-12 mb-3 text-center">
+                    echo '<div class="col-12 mb-3 text-center">
                                 <a href="edit_article.php?id='.$id.'" class="btn btn-warning">Modifier l\'article</a>
                               </div>';
-                    }
                 }
-
+            }
             ?>
             <h4>Vous aimeriez surement aussi : </h4>
             <div class="article-container">
-                <?php for ($i = 0; $i < 4; $i++) { ?>
-                    <?php $randomId = Article::getRandomId();
-                    $randomArticle = Article::getArticleById($randomId['id_article']); ?>
-                    <div class="randomArticle">
-                        <?php if (!empty($randomArticle['image'])){ ?>
-                            <img src="includes/images/article/<?= $randomArticle['image'] ?>" alt="">
-                            <a href="#"><?= $randomArticle['titre']?></a>
-                        <?php }else{ ?>
-                            <img src="https://www.fermeturegarage.com/template/img/no-image.png" alt="">
-                            <a href="#"><?= $randomArticle['titre'] ?></a>
-                        <?php } ?>
-                    </div>
-                <?php } ?>
+                <?php
+                $tabArticles = [];
+                $numberArticle = Article::getNumberArticlesWithCategory($article['id_categorie']);
+
+                if ($numberArticle < 4)
+                {
+                    $articles = Article::getArticleByCategorie($id, $article['id_categorie']);
+                }
+                else
+                {
+                    while (count($tabArticles) < 4)
+                    {
+                        $randomId = Article::getRandomId($id, $article['id_categorie']);
+                        if ($randomId == $id)
+                        {
+                            return;
+                        }
+                        if (!isset($tabArticles[$randomId]))
+                        {
+                            $tabArticles[$randomId] = Article::getArticleById($randomId);
+                        }
+                    }
+                    $articles = $tabArticles;
+                }
+
+                foreach ($articles as $key => $article)
+                {
+                    echo '<div class="randomArticle">';
+                    if (!empty($article['image']))
+                    {
+                        echo '<img src="includes/images/article/' . $article['image'] . ' " alt="">
+                          <a href="article.php?id=' . $article['id_article'] . '"> ' . $article['titre'] . '</a>';
+                    }
+                    else
+                    {
+                        echo '<img src="https://www.fermeturegarage.com/template/img/no-image.png" alt="">
+                          <a href="article.php?id=' . $article['id_article'] . '">' . $article['titre'] . '</a>';
+                    }
+                    echo '</div>';
+                }?>
             </div>
         </section>
         <section class="commentaire-area">
@@ -79,6 +105,7 @@
                 </div>
                 <hr>
             <?php } ?>
+            </form>
         </section>
     </section>
 <?php
