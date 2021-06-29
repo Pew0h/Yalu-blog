@@ -15,7 +15,7 @@
                     else
                     {
                         Menu::updateMenu($_POST['nom'], $_GET['id']);
-                        $_SESSION['alert'] = Main::alert('success', 'Modification du menu avec succès');
+                        header('location: admin_menus.php');
                     }
                 }
             }

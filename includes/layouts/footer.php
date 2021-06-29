@@ -3,11 +3,24 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-sm-6 col-md-3 item" style="margin-left: 50px">
-                    <h3>mini menu </h3>
+                    <h3>Navigation</h3>
                     <ul>
-                        <li><a href="#">item list</a></li>
-                        <li><a href="#">item list</a></li>
-                        <li><a href="#">item list</a></li>
+
+                        <li><a href="./index.php">Accueil</a></li>
+                        <?php if (isset($_SESSION['user_id']))
+                        {
+                        echo '<li><a href="./my_account.php">Mon compte</a></li>';
+                        if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur')
+                        {
+                        echo '<li><a href="./admin/index.php">Administration</a></li>';
+                        }
+                        echo '<li><a href="?logout">Se déconnecter</a></li>';
+                        }
+                        else{
+
+                        echo '<li><a href="./login.php">Se connecter</a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
 
@@ -17,7 +30,7 @@
                 </div>
 
             </div>
-            <p class="copyright">Yalu Blog © 2021</p>
+            <p class="copyright">Yalu Blog © 2021 - Tous droits réservés - Mentions légales</p>
         </div>
     </footer>
 </div>
