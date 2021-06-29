@@ -9,18 +9,6 @@
                         <li><a href="./index.php">Accueil</a></li>
                         <?php if (isset($_SESSION['user_id']))
                         {
-<<<<<<< HEAD
-                            echo '<li><a href="./my_account.php">Mon compte</a></li>';
-                            if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur')
-                            {
-                                echo '<li><a href="./admin/index.php">Administration</a></li>';
-                            }
-                            echo '<li><a href="?logout">Se déconnecter</a></li>';
-                        }
-                        else{
-
-                            echo '<li><a href="./login.php">Se connecter</a></li>';
-=======
                         echo '<li><a href="./my_account.php">Mon compte</a></li>';
                         if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur')
                         {
@@ -31,7 +19,6 @@
                         else{
 
                         echo '<li><a href="./login.php">Se connecter</a></li>';
->>>>>>> origin/Yann
                         }
                         ?>
                     </ul>

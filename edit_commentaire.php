@@ -11,11 +11,7 @@ if (isset($_GET['id']))
             if (isset($_POST['commentaire']) && !empty($_POST['commentaire']))
             {
                 Commentaire::updateCommentaire($_POST['commentaire'], $_GET['id']);
-<<<<<<< HEAD
-                header('location: article.php?id='.Commentaire::getCommentairesById($_GET["id"])[0][1]);
-=======
                  header('location: article.php?id='.Commentaire::getCommentairesById($_GET["id"])[0][1]);
->>>>>>> origin/Yann
 
 
             }
@@ -70,8 +66,4 @@ if (isset($_GET['id']))
 
 </div>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> origin/Yann

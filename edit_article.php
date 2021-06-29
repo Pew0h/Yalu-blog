@@ -89,34 +89,34 @@ if (isset($_POST['modify_article']))
             </div>
         </form>>
     </center>
-    </body>
-    <script>
-        var quill = new Quill('#editeur-contenue', {
-            modules: {
-                toolbar: [
-                    [{ header: [3, 4, false] }],
-                    [{ 'font': [] }],
-                    [{ 'color': [] }, { 'background': [] }],
-                    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-                    [{ 'align': [] }],
-                    ['link'],
-                ]
-            },
-            theme: 'snow'  // or 'bubble'
-        });
+</body>
+<script>
+    var quill = new Quill('#editeur-contenue', {
+        modules: {
+            toolbar: [
+                [{ header: [3, 4, false] }],
+                [{ 'font': [] }],
+                [{ 'color': [] }, { 'background': [] }],
+                ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                [{ 'align': [] }],
+                ['link'],
+            ]
+        },
+        theme: 'snow'  // or 'bubble'
+    });
 
 
-        // When the submit button is clicked, update output
-        $('#modify_article').on('click', () => {
-            // Get HTML content
-            var html = quill.root.innerHTML;
-            $('#contenue-html').val(html)
-            //alert(html);
-        })
-    </script>
-    </html>
+    // When the submit button is clicked, update output
+    $('#modify_article').on('click', () => {
+        // Get HTML content
+        var html = quill.root.innerHTML;
+        $('#contenue-html').val(html)
+        //alert(html);
+    })
+</script>
+</html>
 
 <?php
 require_once ('./includes/layouts/footer.php');

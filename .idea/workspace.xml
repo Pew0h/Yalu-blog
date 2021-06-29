@@ -2,16 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="929a1f94-1fca-4fca-bf17-714c381f5da8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Yalu-blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Yalu-blog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_add_categorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_add_categorie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_add_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_add_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_add_menu_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_add_menu_items.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_add_role.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_add_role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_articles.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_articles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_categorie_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_categorie_modify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_commentaires.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_commentaires_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_commentaires_modify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_menu_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_menu_items.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_menu_items_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_menu_items_modify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_menu_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_menu_modify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_menus.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_menus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_role_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_role_modify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_roles.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_roles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_user_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_user_add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_user_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_user_modify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/admin_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/article.php" beforeDir="false" afterPath="$PROJECT_DIR$/article.php" afterDir="false" />
-=======
+      <change beforePath="$PROJECT_DIR$/create_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/create_article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit_article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit_commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit_commentaire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Categorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Categorie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Commentaire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Main.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/config/database.ini" beforeDir="false" afterPath="$PROJECT_DIR$/includes/config/database.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/css/article_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/article_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/bootstrap.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/css/card_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/card_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/includes/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/includes/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/includes/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/js/quill.js" beforeDir="false" afterPath="$PROJECT_DIR$/includes/js/quill.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/layouts/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/layouts/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/layouts/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/layouts/header_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/layouts/header_admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/sql/tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/includes/sql/tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loadArticleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/loadArticleData.php" afterDir="false" />
->>>>>>> origin/Yann
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/my_account.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +101,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -63,10 +111,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Yalu-blog" />
       <recent name="C:\wamp64\www\Yalu-blog\admin" />
       <recent name="C:\wamp64\www\Yalu-blog\includes\class" />
       <recent name="C:\wamp64\www\Yalu-blog\includes\css" />
+      <recent name="C:\wamp64\www\Yalu-blog" />
       <recent name="C:\wamp64\www\Yalu-blog\includes\config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -111,15 +159,8 @@
       <workItem from="1623395327122" duration="1281000" />
       <workItem from="1623408986939" duration="31000" />
       <workItem from="1623425146353" duration="5248000" />
-<<<<<<< HEAD
-      <workItem from="1624814335860" duration="24000" />
-      <workItem from="1624891213365" duration="3144000" />
-      <workItem from="1624918563366" duration="906000" />
-      <workItem from="1624962884583" duration="770000" />
-=======
       <workItem from="1624891192202" duration="23267000" />
       <workItem from="1624954488297" duration="6433000" />
->>>>>>> origin/Yann
     </task>
     <servers />
   </component>

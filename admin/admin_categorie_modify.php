@@ -1,24 +1,14 @@
 <?php
-require_once('../includes/layouts/header_admin.php');
+    require_once('../includes/layouts/header_admin.php');
 
-if (isset($_GET['id']))
-{
-    if(Categorie::isCategorieIdExist($_GET['id']))
+    if (isset($_GET['id']))
     {
-        if (isset($_POST['button_modify']))
+        if(Categorie::isCategorieIdExist($_GET['id']))
         {
-            if (isset($_POST['nom']) && !empty($_POST['nom']))
+            if (isset($_POST['button_modify']))
             {
-                if (Categorie::isInformationExistAdmin($_POST['nom'], $_GET['id']))
+                if (isset($_POST['nom']) && !empty($_POST['nom']))
                 {
-<<<<<<< HEAD
-                    $_SESSION['alert'] = Main::alert('danger', 'Nom de catégorie déjà utilisée');
-                }
-                else
-                {
-                    Categorie::updateCategorie($_POST['nom'], $_GET['id']);
-                    header('location: admin_categories.php');
-=======
                     if (Categorie::isInformationExistAdmin($_POST['nom'], $_GET['id']))
                     {
                         $_SESSION['alert'] = Main::alert('danger', 'Nom de catégorie déjà utilisée');
@@ -28,21 +18,19 @@ if (isset($_GET['id']))
                         Categorie::updateCategorie($_POST['nom'], $_GET['id']);
                         header('location: admin_categories.php');
                     }
->>>>>>> origin/Yann
                 }
             }
         }
-    }
-    else
-    {
-        header('Location: admin_categories.php');
+        else
+        {
+            header('Location: admin_categories.php');
+            exit;
+        }
+
+    } else{
+        header('Location: index.php');
         exit;
     }
-
-} else{
-    header('Location: index.php');
-    exit;
-}
 
 ?>
 <!-- Page Content -->
