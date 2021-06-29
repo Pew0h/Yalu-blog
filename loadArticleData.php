@@ -47,7 +47,7 @@
                     <div class="single-post post-style-1">
                         <div class="blog-image"><a href="article.php?id='.$article['id_article'].'"><img src="includes/images/article/'.$img.'" alt="Blog Image"></div></a>
                         <div class="blog-info">
-                            <h6><a href="article.php?id='.$article['id_article'].'"><b>'.$article['categorie_nom'].'</b></a></h6>
+                            <h6><a href="index.php?id='.$article['id_categorie'].'"><b>'.$article['categorie_nom'].'</b></a></h6>
                             <hr>
                             <h4 class="title"><a href="article.php?id='.$article['id_article'].'"><b>'.$article['titre'].'</b></a></h4>
                             <a href="article.php?id='.$article['id_article'].'" class="button" ><i class="ion-pricetag"></i>  Voir l\'article </a>
