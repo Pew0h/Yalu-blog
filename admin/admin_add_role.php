@@ -7,7 +7,7 @@ if (isset($_POST['button_register']))
         if (!Role::isInformationExist($_POST['nom']))
         {
             Role::insertRole($_POST['nom']);
-            $_SESSION['alert'] = Main::alert('success', 'Rôle ajouté avec succès');
+            header('location: admin_roles.php');
         }
         else
         {

@@ -16,7 +16,7 @@
                     else
                     {
                         Role::updateRole($_POST['nom'], $_GET['id']);
-                        $_SESSION['alert'] = Main::alert('success', 'Modification du rôle avec succès');
+                        header('location: admin_roles.php');
                     }
                 }
             }
