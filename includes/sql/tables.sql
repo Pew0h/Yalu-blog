@@ -51,7 +51,7 @@ CREATE TABLE Article(
 
 CREATE TABLE Commentaire(
    id_commentaire INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   commentaire VARCHAR(50),
+   commentaire VARCHAR(100),
    id_article INT NOT NULL,
    id_utilisateur INT NOT NULL,
    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,

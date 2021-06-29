@@ -3,29 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="929a1f94-1fca-4fca-bf17-714c381f5da8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_add_categorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_add_categorie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_add_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_add_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_add_menu_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_add_menu_items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_add_role.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_add_role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_categorie_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_categorie_modify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_commentaires.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_menu_items_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_menu_items_modify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_menu_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_menu_modify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_role_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_role_modify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_user_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_user_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin_user_modify.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin_user_modify.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/article.php" beforeDir="false" afterPath="$PROJECT_DIR$/article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edit_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit_article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/class/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/class/Commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Commentaire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/config/database.ini" beforeDir="false" afterPath="$PROJECT_DIR$/includes/config/database.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/css/article_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/article_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/css/card_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/card_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/includes/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/layouts/card_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/layouts/card_article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/layouts/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/layouts/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/layouts/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loadArticleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/loadArticleData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/sql/tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/includes/sql/tables.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
