@@ -38,6 +38,7 @@ if (isset($_POST['button_register']))
                     }
                     ?>
                     <div class="shadow p-3 mb-5 bg-white rounded">
+                        <center>
                         <form method="POST">
                             <div class="form-group">
                                 <input type="text" class="form-control w-50" id="prenom" name="prenom" placeholder="Prénom">
@@ -67,6 +68,7 @@ if (isset($_POST['button_register']))
                             </div>
                             <button type="submit" name="button_register" class="btn btn-primary">Ajouter l'utilisateur</button>
                         </form>
+                        </center>
                     </div>
                 </div>
             </div>

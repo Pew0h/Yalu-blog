@@ -33,9 +33,15 @@ if (isset($_POST['modify_article']))
 {
     if (isset($_POST['titre']) && !empty($_POST['titre']) && isset($_POST['contenue-html']) && !empty($_POST['contenue-html']))
     {
-        Article::updateArticle($id, $_POST['titre'], $_POST['contenue-html'], $_POST['select_categorie']);
-        var_dump($id);
-        header('location: article.php?id='.$id);
+        if (strlen($_POST['titre']) > 100)
+        {
+            $_SESSION['alert'] = Main::alert('danger', 'Le titre ne peut pas dépasser 100 caractères !');
+        }
+        else
+        {
+            Article::updateArticle($id, $_POST['titre'], $_POST['contenue-html'], $_POST['select_categorie']);
+            header('location: article.php?id='.$id);
+        }
     }
     else{
         $_SESSION['alert'] = Main::alert('danger', 'Veuillez remplir tous les champs requis !');
@@ -57,7 +63,7 @@ if (isset($_POST['modify_article']))
                 ?>
                 <div class="form-group">
                     <label class="form-inline" style="font-weight: bold">Titre de l'article</label>
-                    <input type="text" class="form-control" id="titre" name="titre" value="<?= Article::getArticleInformation($id, 'titre') ?>">
+                    <input type="text" class="form-control" id="titre" name="titre" maxlength="100" value="<?= Article::getArticleInformation($id, 'titre') ?>">
                 </div>
                 <div class="form-group">
                     <label class="form-inline" style="font-weight: bold">Contenue de l'article</label>

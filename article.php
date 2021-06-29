@@ -39,9 +39,7 @@ if (isset($_POST['button_update_commentaire'])) {
         <section class="header">
             <h1><?= $article['titre']?></h1>
             <div class="link">
-                <h4><?= $article['categorie_nom']?> -</h4>
-                <h4><?= $numberCom, " " ?> Commentaires</h4>
-                <h4>- <?= $article['date_creation']?></h4>
+                <h4><?= $article['categorie_nom']?> - <?= $numberCom, " " ?>Commentaires - <?= $article['date_creation']?></h4>
             </div>
             <?php
                 if (!empty($article['image']))

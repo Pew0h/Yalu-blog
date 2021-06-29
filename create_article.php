@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])){
     exit;
 }
 
-elseif (isset($_SESSION['user_id']) && Role::getUserRole($_SESSION['user_id']) == 'Éditeur')
+elseif (isset($_SESSION['user_id']) && Role::getUserRole($_SESSION['user_id']) == 'Abonné')
 {
     header('Location: index.php');
     exit;
@@ -28,8 +28,16 @@ if (isset($_POST['add_article']))
     }
     if (isset($_POST['titre']) && !empty($_POST['titre']) && isset($_POST['contenue-html']) && !empty($_POST['contenue-html']))
     {
-        Article::insertArticle($_POST['titre'], $_POST['contenue-html'], $article_image, $_POST['select_categorie'], $_SESSION['user_id']);
-        $_SESSION['alert'] = Main::alert('success', 'Ajout de l\'article avec succès !');
+        if (strlen($_POST['titre']) > 100)
+        {
+            $_SESSION['alert'] = Main::alert('danger', 'Le titre ne peut pas dépasser 100 caractères !');
+        }
+        else
+        {
+            Article::insertArticle($_POST['titre'], $_POST['contenue-html'], $article_image, $_POST['select_categorie'], $_SESSION['user_id']);
+            $_SESSION['alert'] = Main::alert('success', 'Ajout de l\'article avec succès !');
+        }
+
     }
     else{
         $_SESSION['alert'] = Main::alert('danger', 'Veuillez remplir tous les champs requis !');
@@ -51,7 +59,7 @@ if (isset($_POST['add_article']))
                 ?>
                 <div class="form-group">
                     <label class="form-inline" style="font-weight: bold">Titre de l'article</label>
-                    <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre">
+                    <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre" maxlength="100">
                 </div>
                 <div class="form-group">
                     <label class="form-inline" style="font-weight: bold">Contenue de l'article</label>

@@ -28,7 +28,7 @@ if (isset($_POST['button_register']))
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2><i class="fas fa-book-open"></i> Ajout d'une catégorie</h2>
+                <h2><i class="fas fa-user-tag"></i> Ajout d'un rôle</h2>
                 <hr>
             </div>
             <div class="col-lg-12">
@@ -42,10 +42,10 @@ if (isset($_POST['button_register']))
                         <form method="POST">
 
                             <div class="form-group">
-                                <input type="text" class="form-control w-50" id="nom" name="nom" placeholder="Nom de la catégorie">
+                                <input type="text" class="form-control w-50" id="nom" name="nom" placeholder="Nom du rôle">
                             </div>
 
-                            <button type="submit" name="button_register" class="btn btn-primary">Ajouter la catégorie</button>
+                            <button type="submit" name="button_register" class="btn btn-primary">Ajouter le rôle</button>
                         </form>
                     </div>
                 </center>

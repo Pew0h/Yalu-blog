@@ -39,7 +39,7 @@ CREATE TABLE Utilisateur(
 
 CREATE TABLE Article(
    id_article INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   titre VARCHAR(255) NOT NULL,
+   titre VARCHAR(100) NOT NULL,
    image VARCHAR(255) NOT NULL,
    contenu LONGTEXT NOT NULL,
    id_categorie INT NOT NULL,
