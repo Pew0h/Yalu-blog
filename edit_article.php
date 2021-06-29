@@ -34,8 +34,7 @@ if (isset($_POST['modify_article']))
     if (isset($_POST['titre']) && !empty($_POST['titre']) && isset($_POST['contenue-html']) && !empty($_POST['contenue-html']))
     {
         Article::updateArticle($id, $_POST['titre'], $_POST['contenue-html'], $_POST['select_categorie']);
-        var_dump($id);
-        header('location: article.php?id='.$id);
+        $_SESSION['alert'] = Main::alert('success', 'Modification de l\'article avec succès !');
     }
     else{
         $_SESSION['alert'] = Main::alert('danger', 'Veuillez remplir tous les champs requis !');

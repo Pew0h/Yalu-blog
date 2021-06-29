@@ -9,8 +9,7 @@ if (isset($_POST['id_commentaire']))
     }
     if (isset($_POST['button_modify_commentaire']))
     {
-        header('Location: admin_commentaires_modify.php?id='.$_POST['id_commentaire']);
-        exit;
+
     }
 }
 ?>
@@ -56,7 +55,7 @@ if (isset($_POST['id_commentaire']))
                         echo '<input type="hidden" name="id_commentaire" id="id_commentaire" value="' .$article['id_commentaire'].'">';
                         echo '<th scope="row">'.$article['id_commentaire'].'</th>';
                         echo '<td>'.utf8_encode($article['commentaire']).'</td>';
-                        echo '<td><a href="../article.php?id='.$article['id_article'].'">'.$article['titre'].'</a></td>';
+                        echo '<td><a href="../index.php?id='.$article['id_article'].'">'.$article['titre'].'</a></td>';
                         echo '<td>'.$article['pseudo'].'</td>';
                         echo '<td width="200px">'.$article['date_creation'].'</td>';;
                         echo '<td width="250px"><button style="margin-right: 10px" type="submit" name="button_modify_commentaire" class="btn btn-outline-warning">Modifier</button> 

@@ -35,7 +35,7 @@
                     if(isset($lien) && !empty($lien))
                     {
                         Menu::updateItem($id_item, $_POST['nom'], $lien, $item);
-                        header('location: admin_menu_items.php');
+                        $_SESSION['alert'] = Main::alert('success', 'Item modifié avec succès');
                     }
                     else
                     {

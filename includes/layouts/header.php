@@ -52,7 +52,7 @@ if(isset($_GET['logout']))
             <?php
             if (isset($_SESSION['user_id']) && Role::getUserRole($_SESSION['user_id']) != 'Éditeur')
                 echo '<a class="nav-item nav-link active" style="font-size: large" href="create_article.php">Ajouter article</a>';
-            foreach (Menu::getMenuItems(2) as $menuItem) {
+            foreach (Menu::getMenuItems(4) as $menuItem) {
                 if ($menuItem['parent'] == 1)
                 {
                     echo '

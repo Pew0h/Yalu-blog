@@ -12,26 +12,6 @@
         header('Location: index.php');
         exit;
     }
-
-    if (isset($_POST['commentaire']) && !empty($_POST['commentaire'])){
-        Commentaire::InsertCommentaire($_POST['commentaire'], $_POST['id_article'], $_POST['id_utilisateur']);
-        header('location: article.php?id='.$id.'');
-        exit;
-    }
-
-    if (isset($_POST['button_delete_commentaire'])) {
-        Commentaire::deleteCommentaire($_POST['id_commentaire']);
-        header('location: article.php?id='.$id.'');
-        exit;
-    }
-
-if (isset($_POST['button_update_commentaire'])) {
-    header('location: edit_commentaire.php?id='.$_POST['id_commentaire'].'');
-
-}
-
-
-
     $numberCom = Commentaire::getNumberCommentairesArticle($id);
     $article = Article::getArticleById($id);
 ?>
@@ -61,7 +41,7 @@ if (isset($_POST['button_update_commentaire'])) {
                 {
                     if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur' || Article::getArticleInformation($id, 'id_utilisateur') == $_SESSION['user_id'])
                     {
-                        echo '<div class="col-12 mb-3 text-center modif-article">
+                        echo '<div class="col-12 mb-3 text-center">
                                 <a href="edit_article.php?id='.$id.'" class="btn btn-warning">Modifier l\'article</a>
                               </div>';
                     }
@@ -70,92 +50,35 @@ if (isset($_POST['button_update_commentaire'])) {
             ?>
             <h4>Vous aimeriez surement aussi : </h4>
             <div class="article-container">
-
-            <?php
-
-            $tabArticles = [];
-            $numberArticle = Article::getNumberArticlesWithCategory($article['id_categorie']);
-
-            if ($numberArticle < 4 ){
-                $articles = Article::getArticleByCategorie($id, $article['id_categorie']);
-
-                }else{
-                   while (count($tabArticles) <4 ) {
-                       $randomId = Article::getRandomId($id, $article['id_categorie']);
-                        if ($randomId == $id){
-                            return;
-                        }
-                        if (!isset($tabArticles[$randomId])) {
-                            $tabArticles[$randomId] = Article::getArticleById($randomId);
-                        }
-                    }
-                    $articles = $tabArticles;
-                }
-
-            foreach ($articles as $key => $articleRandom) {
-                echo '<div class="randomArticle">';
-                if (!empty($articleRandom['image'])) {
-                    echo '<a href="article.php?id=' . $articleRandom['id_article'] . '">
-                            <img src="includes/images/article/' . $articleRandom['image'] . ' " alt="">
-                           ' . $articleRandom['titre'] . '</a>';
-                } else {
-                        $contenu_trunc = Article::truncate($articleRandom['contenu'], 180, '...', true);
-                    echo '<a href="article.php?id=' . $articleRandom['id_article'] . '">' . $articleRandom['titre'] . $contenu_trunc .'</a>';
-
-                }
-                echo '</div>';
-            }?>
-
+                <?php for ($i = 0; $i < 4; $i++) { ?>
+                    <?php $randomId = Article::getRandomId();
+                    $randomArticle = Article::getArticleById($randomId['id_article']); ?>
+                    <div class="randomArticle">
+                        <?php if (!empty($randomArticle['image'])){ ?>
+                            <img src="includes/images/article/<?= $randomArticle['image'] ?>" alt="">
+                            <a href="#"><?= $randomArticle['titre']?></a>
+                        <?php }else{ ?>
+                            <img src="https://www.fermeturegarage.com/template/img/no-image.png" alt="">
+                            <a href="#"><?= $randomArticle['titre'] ?></a>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
             </div>
-
-       </section>
-
+        </section>
         <section class="commentaire-area">
             <h3><?= $numberCom ?> Commentaire : </h3>
             <?php foreach (Commentaire::getCommentairesArticle($id) as $commentaire){ ?>
                 <div class="commentaire">
                     <div class="head-commentaire">
-                        <div class="headCommentaire">
-                            <h5> <?= $commentaire['prenom'], " ",  $commentaire['nom']?> </h5>
-                            <p><?= " le ", $commentaire['date_creation']?></p>
-                        </div>
-
-                            <?php if ($_SESSION['user_id'] == $commentaire['id_utilisateur']){
-                                echo '<form method="POST">
-                                    <div class="buttonCommentaire">
-                                        <input type="hidden" name="id_commentaire" value='.$commentaire['id_commentaire'].'>
-                                        <input type="hidden" name="id_article" value='.$id.'>
-                                        <button type="submit" class="btn btn-outline-danger" name="button_delete_commentaire">Supprimer</button>
-                                        <button type="submit" class="btn btn-outline-warning" name="button_update_commentaire">Modifier</button>
-                                    </div>
-                                       </form>';
-                            }
-
-                            ?>
-
+                        <h5> <?= $commentaire['prenom'], " ",  $commentaire['nom']?> </h5>
+                        <p><?= " le ", $commentaire['date_creation']?></p>
                     </div>
                     <div class="content-commentaire">
                         <p><?= utf8_encode($commentaire['commentaire'])?></p>
                     </div>
                 </div>
                 <hr>
-            <?php }
-
-            if (isset($_SESSION['user_id']))
-            { ?>
-
-            <h4>Ajouter un commentaire</h4>
-            <form id="AddCommentaire" method="POST">
-                <div class="addCommentaire">
-                    <textarea type="" id="commentaire" name="commentaire" rows="2" cols="70" maxlength="100"></textarea>
-                    <input type="hidden" id="id_article" name="id_article" value="<?= $article['id_article']?>">
-                    <input type="hidden" id="id_utilisateur" name="id_utilisateur" value="<?= $_SESSION['user_id']?>">
-                    <button type="submit" class="btn btn-outline-dark">Poster</button>
-                </div>
-            </form>
-
-                <?php }?>
-
+            <?php } ?>
         </section>
     </section>
 <?php

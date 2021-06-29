@@ -7,7 +7,7 @@ if (isset($_POST['button_register']))
         if (!Categorie::isInformationExist($_POST['nom']))
         {
             Categorie::insertCategorie($_POST['nom']);
-            header('location: admin_categories.php');
+            $_SESSION['alert'] = Main::alert('success', 'Catégorie ajouté avec succès');
         }
         else
         {

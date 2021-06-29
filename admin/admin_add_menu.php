@@ -7,7 +7,7 @@ if (isset($_POST['button_register']))
         if (!Menu::isInformationExist($_POST['nom']))
         {
             Menu::insertMenu($_POST['nom']);
-            header('location: admin_menus.php');
+            $_SESSION['alert'] = Main::alert('success', 'Menu ajouté avec succès');
         }
         else
         {

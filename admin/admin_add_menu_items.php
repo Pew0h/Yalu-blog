@@ -39,7 +39,7 @@ if (isset($_POST['button_register']))
         if(isset($lien) && !empty($lien))
         {
             Menu::insertItems($id_menu, $_POST['nom'], $lien, $item);
-            header('location: admin_menu_items.php');
+            $_SESSION['alert'] = Main::alert('success', 'Item ajouté avec succès');
         }
         else
         {

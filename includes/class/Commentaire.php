@@ -1,40 +1,6 @@
 <?php
 class Commentaire
 {
-
-
-    public static function InsertCommentaire(string $commentaire, string $id_article, string $id_utilisateur ){
-
-        $database = Database::getInstance();
-        $request = $database->prepare('INSERT INTO commentaire(commentaire, id_article, id_utilisateur, date_creation) VALUES (:commentaire, :id_article, :id_utilisateur, :date_creation)');
-        $request->execute(array(
-            'commentaire' => $commentaire,
-            'id_article' => $id_article,
-            'id_utilisateur' => $id_utilisateur,
-            'date_creation' => date('Y-m-d')
-        ));
-
-    }
-
-    public static function updateCommentaire(string $commentaire, int $id){
-
-        $request = Database::getInstance()->prepare('UPDATE commentaire SET commentaire = :commentaire WHERE id_commentaire = :id');
-        $request->execute(array(
-            'commentaire' => $commentaire,
-            'id' => $id
-        ));
-    }
-
-    public static function isCommentaireIdExist($id)
-    {
-        $request = Database::getInstance()->prepare('SELECT id_commentaire FROM commentaire WHERE id_commentaire = :id');
-        $request->execute(array(
-            'id' => $id
-        ));
-
-        return $request->rowCount() >= 1;
-    }
-
     public static function getNumberCommentaires()
     {
         $request = Database::getInstance()->query('SELECT count(*) FROM commentaire');
@@ -83,18 +49,6 @@ class Commentaire
         $request->execute(array(
             'id' => $id_commentaire,
         ));
-    }
-
-    public static function getCommentairesById($id)
-    {
-        $database = Database::getInstance();
-        $request = $database->prepare('SELECT commentaire, id_article FROM commentaire WHERE id_commentaire = :id');
-        $request->execute(array(
-            'id' => $id,
-        ));
-
-        $data = $request->fetchAll();
-        return $data;
     }
 }
 

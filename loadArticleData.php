@@ -45,15 +45,15 @@
             '<div class="col-lg-4 col-md-6">
                 <div class="card h-100">
                     <div class="single-post post-style-1">
-                        <div class="blog-image"><a href="article.php?id='.$article['id_article'].'"><img src="includes/images/article/'.$img.'" alt="Blog Image"></div></a>
+                        <div class="blog-image"><img src="includes/images/article/'.$img.'" alt="Blog Image"></div>
                         <div class="blog-info">
                             <h6><a href="index.php?id='.$article['id_categorie'].'"><b>'.$article['categorie_nom'].'</b></a></h6>
                             <hr>
-                            <h4 class="title"><a href="article.php?id='.$article['id_article'].'"><b>'.$article['titre'].'</b></a></h4>
+                            <h4 class="title"><a href="#"><b>'.$article['titre'].'</b></a></h4>
                             <a href="article.php?id='.$article['id_article'].'" class="button" ><i class="ion-pricetag"></i>  Voir l\'article </a>
                             <ul class="post-footer">
-                                <li><i class="ion-calendar"></i>'.$article['date_creation'].'</li>
-                                <li><i class="ion-chatbubble"></i>'.Commentaire::getNumberCommentairesArticle($article['id_article']).'</li>
+                                <li><a href="#"><i class="ion-calendar"></i>'.$article['date_creation'].'</a></li>
+                                <li><a href="#"><i class="ion-chatbubble"></i>'.Commentaire::getNumberCommentairesArticle($article['id_article']).'</a></li>
                                 </ul>
                         </div>
                     </div>
@@ -73,8 +73,8 @@
                             <p class="blog-contenu">'.$contenu_trunc.'</p>
                             <a href="article.php?id='.$article['id_article'].'" class="button"><i class="ion-pricetag"></i>  Voir l\'article </a>
                             <ul class="post-footer">
-                                <li><i class="ion-calendar"></i>'.$article['date_creation'].'</li>
-                                <li><i class="ion-chatbubble"></i>'.Commentaire::getNumberCommentairesArticle($article['id_article']).'</li>
+                                <li><a href="#"><i class="ion-calendar"></i>'.$article['date_creation'].'</a></li>
+                                <li><a href="#"><i class="ion-chatbubble"></i>'.Commentaire::getNumberCommentairesArticle($article['id_article']).'</a></li>
                             </ul>
                         </div><!-- blog-right -->
                     </div><!-- single-post extra-blog -->
