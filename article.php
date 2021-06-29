@@ -61,7 +61,7 @@ if (isset($_POST['button_update_commentaire'])) {
                 {
                     if (Role::getUserRole($_SESSION['user_id']) == 'Administrateur' || Article::getArticleInformation($id, 'id_utilisateur') == $_SESSION['user_id'])
                     {
-                        echo '<div class="col-12 mb-3 text-center">
+                        echo '<div class="col-12 mb-3 text-center modif-article">
                                 <a href="edit_article.php?id='.$id.'" class="btn btn-warning">Modifier l\'article</a>
                               </div>';
                     }
@@ -94,12 +94,14 @@ if (isset($_POST['button_update_commentaire'])) {
 
             foreach ($articles as $key => $articleRandom) {
                 echo '<div class="randomArticle">';
-                if (!empty($article['image'])) {
-                    echo '<img src="includes/images/article/' . $articleRandom['image'] . ' " alt="">
-                          <a href="article.php?id=' . $articleRandom['id_article'] . '"> ' . $articleRandom['titre'] . '</a>';
+                if (!empty($articleRandom['image'])) {
+                    echo '<a href="article.php?id=' . $articleRandom['id_article'] . '">
+                            <img src="includes/images/article/' . $articleRandom['image'] . ' " alt="">
+                           ' . $articleRandom['titre'] . '</a>';
                 } else {
-                    echo '<img src="https://www.fermeturegarage.com/template/img/no-image.png" alt="">
-                          <a href="article.php?id=' . $articleRandom['id_article'] . '">' . $articleRandom['titre'] . '</a>';
+                        $contenu_trunc = Article::truncate($articleRandom['contenu'], 180, '...', true);
+                    echo '<a href="article.php?id=' . $articleRandom['id_article'] . '">' . $articleRandom['titre'] . $contenu_trunc .'</a>';
+
                 }
                 echo '</div>';
             }?>

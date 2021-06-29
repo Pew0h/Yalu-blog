@@ -17,7 +17,7 @@
                     else
                     {
                         User::updateUser($_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['role'], $_GET['id']);
-                        $_SESSION['alert'] = Main::alert('success', 'Modification de l\'utilisateur avec succès');
+                        header('location: admin_users.php');
                     }
 
                 }

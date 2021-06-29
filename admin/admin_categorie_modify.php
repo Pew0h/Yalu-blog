@@ -16,7 +16,7 @@
                     else
                     {
                         Categorie::updateCategorie($_POST['nom'], $_GET['id']);
-                        $_SESSION['alert'] = Main::alert('success', 'Modification de la catégorie avec succès');
+                        header('location: admin_categories.php');
                     }
                 }
             }

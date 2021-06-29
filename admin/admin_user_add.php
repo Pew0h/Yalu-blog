@@ -8,7 +8,7 @@ if (isset($_POST['button_register']))
         if (!User::isInformationExist($_POST['pseudo'], $_POST['password']))
         {
             User::insertUser($_POST['prenom'], $_POST['nom'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['role']);
-            $_SESSION['alert'] = Main::alert('success', 'Utilisateur ajouté avec succès');
+            header('location: admin_users.php');
         }
         else
         {

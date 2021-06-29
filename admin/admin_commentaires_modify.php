@@ -42,13 +42,15 @@ if (isset($_GET['id']))
                         echo $_SESSION['alert'];
                     }
                     ?>
+
                     <div class="shadow p-3 mb-5 bg-white rounded">
                         <form method="POST">
                             <div class="input-group mb-3 w-50">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" style="width: 120px" id="basic-addon3">Commentaire </span>
                                 </div>
-                                <textarea  type="text" class="form-control w-50" id="commentaire" name="commentaire" cols="60" rows="4"><?= Commentaire::getCommentairesById($_GET['id']) ?></textarea>
+
+                                <textarea  type="text" class="form-control w-50" id="commentaire" name="commentaire" cols="60" rows="4"><?= Commentaire::getCommentairesById($_GET['id'])[0][0] ?></textarea>
                             </div>
                             <button type="submit" name="button_modify" class="btn btn-primary">Modifer le commentaire</button>
                         </form>
