@@ -93,13 +93,13 @@ class Menu
         }
     }
 
-    public static function getMenuItems(int $id)
+    public static function getMenuItems(string $name)
     {
         $request = Database::getInstance()->query("SELECT id_menu_items AS 'id', menu_items.nom, parent_id, lien, 
                                                    CASE WHEN( SELECT COUNT(*) FROM menu_items WHERE parent_id = id) > 0 
                                                    THEN TRUE ELSE FALSE END AS 'parent' FROM menu_items
                                                    LEFT OUTER JOIN menu ON menu.id_menu = menu_items.id_menu
-                                                   WHERE menu.id_menu = $id ORDER BY ordre");
+                                                   WHERE menu.nom = '$name' ORDER BY ordre");
         return $request->fetchAll();
     }
 
