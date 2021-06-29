@@ -81,6 +81,7 @@ body{
     background: linear-gradient(to bottom right, #095985, #41215B);
     background-size:cover;
     overflow-y: auto;
+
 }
 
 
@@ -161,5 +162,4 @@ body{
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link
-
 
