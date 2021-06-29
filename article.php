@@ -120,7 +120,7 @@ $article = Article::getArticleById($id);
                             <p><?= " le ", $commentaire['date_creation']?></p>
                         </div>
 
-                        <?php if ($_SESSION['user_id'] == $commentaire['id_utilisateur']){
+                        <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $commentaire['id_utilisateur']){
                             echo '<form method="POST">
                                     <div class="buttonCommentaire">
                                         <input type="hidden" name="id_commentaire" value='.$commentaire['id_commentaire'].'>
