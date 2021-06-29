@@ -17,6 +17,10 @@ SECTION HEADER
     flex-direction: column;
 }
 
+.header img{
+    object-fit: contain;
+}
+
 .header h1{
     margin-top: 20px;
     margin-left: 50px;
@@ -83,6 +87,10 @@ SECTION CONTENT
 VOIR PLUS
 ****************/
 
+.modif-article a{
+    margin-bottom: 20px;
+}
+
 
 .voir-plus h4{
     text-align: center;
@@ -111,9 +119,11 @@ VOIR PLUS
     background: lightgray;
 }
 
-.randomArticle img{
+.randomArticle a img{
 
     height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
 }
 
 /*******************
