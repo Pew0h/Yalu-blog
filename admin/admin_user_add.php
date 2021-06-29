@@ -31,7 +31,7 @@ if (isset($_POST['button_register']))
                 <hr>
             </div>
             <div class="col-lg-12">
-                <center>
+                <div style="text-align: center;">
                     <?php
                     if(isset($_SESSION['alert'])) {
                         echo $_SESSION['alert'];
@@ -68,7 +68,7 @@ if (isset($_POST['button_register']))
                             <button type="submit" name="button_register" class="btn btn-primary">Ajouter l'utilisateur</button>
                         </form>
                     </div>
-                </center>
+                </div>
             </div>
         </div>
     </div>

@@ -11,12 +11,24 @@ if (isset($_GET['id']))
             {
                 if (Categorie::isInformationExistAdmin($_POST['nom'], $_GET['id']))
                 {
+<<<<<<< HEAD
                     $_SESSION['alert'] = Main::alert('danger', 'Nom de catégorie déjà utilisée');
                 }
                 else
                 {
                     Categorie::updateCategorie($_POST['nom'], $_GET['id']);
                     header('location: admin_categories.php');
+=======
+                    if (Categorie::isInformationExistAdmin($_POST['nom'], $_GET['id']))
+                    {
+                        $_SESSION['alert'] = Main::alert('danger', 'Nom de catégorie déjà utilisée');
+                    }
+                    else
+                    {
+                        Categorie::updateCategorie($_POST['nom'], $_GET['id']);
+                        header('location: admin_categories.php');
+                    }
+>>>>>>> origin/Yann
                 }
             }
         }
