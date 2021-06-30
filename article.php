@@ -14,7 +14,7 @@
     }
 
     if (isset($_POST['commentaire']) && !empty($_POST['commentaire'])){
-        Commentaire::InsertCommentaire($_POST['commentaire'], $_POST['id_article'], $_POST['id_utilisateur']);
+        Commentaire::InsertCommentaire(utf8_decode($_POST['commentaire']), $_POST['id_article'], $_POST['id_utilisateur']);
         header('location: article.php?id='.$id.'');
         exit;
     }
@@ -133,7 +133,7 @@ if (isset($_POST['button_update_commentaire'])) {
 
                     </div>
                     <div class="content-commentaire">
-                        <p><?= utf8_encode($commentaire['commentaire'])?></p>
+                        <p><?= utf8_encode($commentaire['commentaire']);?></p>
                     </div>
                 </div>
                 <hr>
