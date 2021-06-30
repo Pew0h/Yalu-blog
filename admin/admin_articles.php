@@ -55,7 +55,7 @@ if (isset($_POST['id_article']))
                         echo '<form method="POST"><tr>';
                         echo '<input type="hidden" name="id_article" id="id_article" value="' .$article['id_article'].'">';
                         echo '<th scope="row">'.$article['id_article'].'</th>';
-                        echo '<td>'.$article['titre'].'</td>';
+                        echo '<td>'.utf8_encode($article['titre']).'</td>';
                         echo '<td>'.$article['categorie_nom'].'</td>';
                         echo '<td>'.$article['pseudo'].'</td>';
                         echo '<td width="200px">'.$article['date_creation'].'</td>';;

@@ -34,7 +34,7 @@ if (isset($_POST['add_article']))
         }
         else
         {
-            Article::insertArticle($_POST['titre'], $_POST['contenue-html'], $article_image, $_POST['select_categorie'], $_SESSION['user_id']);
+            Article::insertArticle(utf8_decode($_POST['titre']), utf8_decode($_POST['contenue-html']), utf8_decode($article_image), $_POST['select_categorie'], $_SESSION['user_id']);
             $_SESSION['alert'] = Main::alert('success', 'Ajout de l\'article avec succès !');
         }
 

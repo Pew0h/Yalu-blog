@@ -65,7 +65,7 @@ if (isset($_POST['id_menu']))
                         echo '<form method="POST"><tr>';
                         echo '<input type="hidden" name="id_menu" id="id_menu" value="' .$menu['id_menu'].'">';
                         echo '<th scope="row">'.$menu['id_menu'].'</th>';
-                        echo '<td>'.$menu['nom'].'</td>';
+                        echo '<td>'.utf8_encode($menu['nom']).'</td>';
                         echo '<td width="400px">
                                 <button type="submit" class="btn btn-outline-primary" name="button_list_menu_items">Liste des items</button>
                                 <button type="submit" name="button_modify_menu" class="btn btn-outline-warning">Modifier</button> 

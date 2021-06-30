@@ -6,7 +6,7 @@ if (isset($_POST['button_register']))
     if  (isset($_POST['nom'])  && !empty($_POST['nom']) ) {
         if (!Menu::isInformationExist($_POST['nom']))
         {
-            Menu::insertMenu($_POST['nom']);
+            Menu::insertMenu(utf8_decode($_POST['nom']));
             header('location: admin_menus.php');
         }
         else

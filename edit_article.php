@@ -39,7 +39,7 @@ if (isset($_POST['modify_article']))
         }
         else
         {
-            Article::updateArticle($id, $_POST['titre'], $_POST['contenue-html'], $_POST['select_categorie']);
+            Article::updateArticle($id, utf8_decode($_POST['titre']), utf8_decode($_POST['contenue-html']), utf8_decode($_POST['select_categorie']));
             header('location: article.php?id='.$id);
         }
     }
@@ -63,12 +63,12 @@ if (isset($_POST['modify_article']))
                 ?>
                 <div class="form-group">
                     <label class="form-inline" style="font-weight: bold">Titre de l'article</label>
-                    <input type="text" class="form-control" id="titre" name="titre" maxlength="100" value="<?= Article::getArticleInformation($id, 'titre') ?>">
+                    <input type="text" class="form-control" id="titre" name="titre" maxlength="100" value="<?= utf8_encode(Article::getArticleInformation($id, 'titre')) ?>">
                 </div>
                 <div class="form-group">
                     <label class="form-inline" style="font-weight: bold">Contenue de l'article</label>
                     <div style="height: 350px" id="editeur-contenue" name="editeur-contenue">
-                        <?= Article::getArticleInformation($id, 'contenu') ?>
+                        <?= utf8_encode(Article::getArticleInformation($id, 'contenu')) ?>
                     </div>
                 </div>
                 <div class="form-group form-inline">

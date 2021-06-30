@@ -91,7 +91,7 @@ class Article
 
     public static function getArticleByCategorie(int $id, int $id_cat)
     {
-        $randomId = Database::getInstance()->prepare("SELECT * FROM article WHERE id_article != :id AND id_categorie = :id_cat ORDER BY RAND() LIMIT 1 ");
+        $randomId = Database::getInstance()->prepare("SELECT * FROM article WHERE id_article != :id AND id_categorie = :id_cat");
         $randomId->execute(array(
             'id' => $id,
             'id_cat' => $id_cat

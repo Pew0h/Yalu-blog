@@ -37,19 +37,19 @@ if (isset($_POST['button_update_commentaire'])) {
 ?>
     <section class="body container">
         <section class="header">
-            <h1><?= $article['titre']?></h1>
+            <h1><?= utf8_encode($article['titre'])?></h1>
             <div class="link">
                 <h4><?= $article['categorie_nom']?> - <?= $numberCom, " " ?>Commentaires - <?= $article['date_creation']?></h4>
             </div>
             <?php
                 if (!empty($article['image']))
-                    echo '<img src="includes/images/article/'.$article['image'].'" alt="">';
+                    echo '<img src="includes/images/article/'.utf8_encode($article['image']).'" alt="">';
             ?>
         </section>
 
         <section class="content">
             <div class="article-content">
-                <?= $article['contenu']?>
+                <?= utf8_encode($article['contenu'])?>
             </div>
         </section>
 
@@ -94,8 +94,8 @@ if (isset($_POST['button_update_commentaire'])) {
                 echo '<div class="randomArticle">';
                 if (!empty($articleRandom['image'])) {
                     echo '<a href="article.php?id=' . $articleRandom['id_article'] . '">
-                            <img src="includes/images/article/' . $articleRandom['image'] . ' " alt="">
-                           ' . $articleRandom['titre'] . '</a>';
+                            <img src="includes/images/article/' . utf8_encode($articleRandom['image']) . ' " alt="">
+                           ' . utf8_encode($articleRandom['titre']) . '</a>';
                 } else {
                         $contenu_trunc = Article::truncate($articleRandom['contenu'], 200, '...', true);
                     echo '<a href="article.php?id=' . $articleRandom['id_article'] . '">' . $articleRandom['titre'] . $contenu_trunc .'</a>';

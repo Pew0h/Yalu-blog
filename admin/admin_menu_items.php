@@ -71,7 +71,7 @@ require_once('../includes/layouts/header_admin.php');
                         echo '<form method="POST"><tr>';
                         echo '<input type="hidden" name="id_menu_items" id="id_menu_items" value="' .$item['id'].'">';
                         echo '<td>'.$item['id'].'</td>';
-                        echo '<td>'.$item['nom'].'</td>';
+                        echo '<td>'.utf8_encode($item['nom']).'</td>';
                         if($item['parent'] == 1)
                             echo '<td style="font-weight: bold">Item parent</td>';
                         elseif($item['parent_id'] != null)

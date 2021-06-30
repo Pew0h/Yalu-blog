@@ -38,7 +38,7 @@
             $i++; // on compte le nombre d'article pour chaque itération
             $last_page = $page + $i; //pour connaitre le nombre du dernier élèment
 
-        $img = $article['image'];
+        $img = utf8_encode($article['image']);
         if (!empty($img)) {
             $contenu_trunc = Article::truncate($article['contenu'], 75, '...', true);
             $html .=
@@ -49,7 +49,7 @@
                         <div class="blog-info">
                             <h6><a href="index.php?id='.$article['id_categorie'].'"><b>'.$article['categorie_nom'].'</b></a></h6>
                             <hr>
-                            <h4 class="title"><a href="article.php?id='.$article['id_article'].'"><b>'.$article['titre'].'</b></a></h4>
+                            <h4 class="title"><a href="article.php?id='.$article['id_article'].'"><b>'.utf8_encode($article['titre']).'</b></a></h4>
                             <a href="article.php?id='.$article['id_article'].'" class="button" ><i class="ion-pricetag"></i>  Voir l\'article </a>
                             <ul class="post-footer">
                                 <li><i class="ion-calendar"></i>'.$article['date_creation'].'</li>
@@ -69,8 +69,8 @@
                         <div class="blog-info">
                             <h6><a href="index.php?id='.$article['id_categorie'].'"><b>'.$article['categorie_nom'].'</b></a></h6>
                             <hr>
-                            <h4 class="title"><a href="#"><b>'.$article['titre'].'</b></a></h4>
-                            <p class="blog-contenu">'.$contenu_trunc.'</p>
+                            <h4 class="title"><a href="#"><b>'.utf8_encode($article['titre']).'</b></a></h4>
+                            <p class="blog-contenu">'.utf8_encode($contenu_trunc).'</p>
                             <a href="article.php?id='.$article['id_article'].'" class="button"><i class="ion-pricetag"></i>  Voir l\'article </a>
                             <ul class="post-footer">
                                 <li><i class="ion-calendar"></i>'.$article['date_creation'].'</li>

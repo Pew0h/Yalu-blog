@@ -14,7 +14,7 @@
                     }
                     else
                     {
-                        Menu::updateMenu($_POST['nom'], $_GET['id']);
+                        Menu::updateMenu(utf8_decode($_POST['nom']), $_GET['id']);
                         header('location: admin_menus.php');
                     }
                 }
@@ -53,7 +53,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon3">Nom </span>
                                 </div>
-                                <input type="text" class="form-control w-50" id="nom" name="nom" value="<?= Menu::getMenuName($_GET['id']) ?>">
+                                <input type="text" class="form-control w-50" id="nom" name="nom" value="<?= utf8_encode(Menu::getMenuName($_GET['id'])) ?>">
                             </div>
                             <button type="submit" name="button_modify" class="btn btn-primary">Modifer le menu</button>
                         </form>
