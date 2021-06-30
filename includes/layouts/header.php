@@ -56,7 +56,7 @@ if(isset($_GET['logout']))
                 if ($menuItem['parent'] == 1)
                 {
                     echo '
-                           <div class="dropdown" style="width: 10%">
+                           <div class="dropdown" style="width: 10%; margin-right: 70px;">
                                 <a class="nav-item nav-link dropdown-toggle" href="" style="font-size: large" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     '.utf8_encode($menuItem['nom']).'
                                 </a>

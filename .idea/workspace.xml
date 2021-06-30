@@ -4,7 +4,20 @@
     <list default="true" id="929a1f94-1fca-4fca-bf17-714c381f5da8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/article.php" beforeDir="false" afterPath="$PROJECT_DIR$/article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/sql/tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/includes/sql/tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/class/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/config/database.ini" beforeDir="false" afterPath="$PROJECT_DIR$/includes/config/database.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/TP1 - Outillage sécu web.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/YBD.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/drapeau-anglais-rond-300x300-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/kisspng-cascading-style-sheets-css3-logo-html-5af803eba9dae7.8639835515262033716957.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/kisspng-javascript-and-jquery-interactive-front-end-web-d--5b6cfa2639dfc7.1859268215338685822371.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/kisspng-microsoft-sql-server-oracle-database-computer-icon-sql-developer-icon-5b4b22b9adad93.0562563815316507457114.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/kisspng-web-development-php-html-web-application-logo-icon-5ad9e3ea647912.1563693015242290984116.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/kisspng-wordpress-logo-theme-5aec5a4793a276.1615702515254390476047.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/login-background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/images/article/naruto-shippuden-naruto-uzumaki-nine-mode-tail-fond-d-ecran-3440x1440_15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/layouts/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loadArticleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/loadArticleData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +119,7 @@
       <workItem from="1623425146353" duration="5248000" />
       <workItem from="1624891192202" duration="23267000" />
       <workItem from="1624954488297" duration="7063000" />
+      <workItem from="1625060634903" duration="5188000" />
     </task>
     <servers />
   </component>

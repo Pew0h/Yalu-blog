@@ -50,7 +50,7 @@
                             <h6><a href="index.php?id='.$article['id_categorie'].'"><b>'.$article['categorie_nom'].'</b></a></h6>
                             <hr>
                             <h4 class="title"><a href="article.php?id='.$article['id_article'].'"><b>'.$article['titre'].'</b></a></h4>
-                            <a href="article.php?id='.$article['id_article'].'" class="button" ><i class="ion-pricetag"></i>  Voir l\'article </a>
+                            <a href="article.php?id='.$article['id_article'].'" class="button" ><i class="ion-search"></i>  Voir l\'article </a>
                             <ul class="post-footer">
                                 <li><i class="ion-calendar"></i>'.$article['date_creation'].'</li>
                                 <li><i class="ion-chatbubble"></i>'.Commentaire::getNumberCommentairesArticle($article['id_article']).'</li>

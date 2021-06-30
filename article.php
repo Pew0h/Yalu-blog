@@ -74,8 +74,11 @@ if (isset($_POST['button_update_commentaire'])) {
             $tabArticles = [];
             $numberArticle = Article::getNumberArticlesWithCategory($article['id_categorie']);
 
+
             if ($numberArticle < 4 ){
                 $articles = Article::getArticleByCategorie($id, $article['id_categorie']);
+
+
 
                 }else{
                    while (count($tabArticles) <4 ) {
@@ -90,8 +93,10 @@ if (isset($_POST['button_update_commentaire'])) {
                     $articles = $tabArticles;
                 }
 
-            foreach ($articles as $key => $articleRandom) {
+            foreach ($articles as $articleRandom){
+
                 echo '<div class="randomArticle">';
+
                 if (!empty($articleRandom['image'])) {
                     echo '<a href="article.php?id=' . $articleRandom['id_article'] . '">
                             <img src="includes/images/article/' . $articleRandom['image'] . ' " alt="">
